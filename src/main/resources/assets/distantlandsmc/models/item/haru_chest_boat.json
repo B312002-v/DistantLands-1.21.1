@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "distantlandsmc:item/haru_chest_boat"
+  }
+}

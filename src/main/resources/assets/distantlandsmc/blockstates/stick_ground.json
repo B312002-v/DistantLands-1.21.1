@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/stick_ground", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/stick_ground", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/stick_ground", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/stick_ground", "y": 270 }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "values": {
+    "distantlandsmc:tomato": {
+      "chance": 0.45
+    },
+    "distantlandsmc:tomato_seeds": {
+      "chance": 0.2
+    },
+    "distantlandsmc:haru_sapling": {
+      "chance": 0.5
+    }
+  }
+}

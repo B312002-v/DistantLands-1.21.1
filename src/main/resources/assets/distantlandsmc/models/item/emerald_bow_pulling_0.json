@@ -1,0 +1,6 @@
+{
+  "parent": "distantlandsmc:item/emerald_bow",
+  "textures": {
+    "layer0": "distantlandsmc:item/emerald_bow_pulling_0"
+  }
+}

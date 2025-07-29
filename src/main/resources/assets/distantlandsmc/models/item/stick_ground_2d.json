@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "distantlandsmc:item/stick_ground_2d"
+  }
+}

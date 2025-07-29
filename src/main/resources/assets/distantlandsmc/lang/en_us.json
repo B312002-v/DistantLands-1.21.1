@@ -1,0 +1,163 @@
+{
+  "item.distantlandsmc.black_opal": "Black Opal",
+  "item.distantlandsmc.raw_black_opal": "Raw Black Opal",
+
+  "item.distantlandsmc.chainsaw": "Chainsaw",
+
+  "item.distantlandsmc.tomato": "Tomato",
+
+  "item.distantlandsmc.frostfire_ice": "Frostfire Ice",
+
+  "item.distantlandsmc.metal_detector": "Metal Detector",
+  "item.distantlandsmc.data_tablet": "Data Tablet",
+
+
+  "item.distantlandsmc.emerald_sword": "Emerald Sword",
+  "item.distantlandsmc.emerald_pickaxe": "Emerald Pickaxe",
+  "item.distantlandsmc.emerald_axe": "Emerald Axe",
+  "item.distantlandsmc.emerald_shovel": "Emerald Shovel",
+  "item.distantlandsmc.emerald_hoe": "Emerald Hoe",
+
+  "item.distantlandsmc.emerald_helmet": "Emerald Helmet",
+  "item.distantlandsmc.emerald_chestplate": "Emerald Chestplate",
+  "item.distantlandsmc.emerald_leggings": "Emerald Leggings",
+  "item.distantlandsmc.emerald_boots": "Emerald Boots",
+
+  "item.distantlandsmc.emerald_horse_armor": "Emerald Horse Armor",
+
+
+  "item.distantlandsmc.beast_armor_trim_smithing_template": "Beast Trim Template ",
+
+
+  "item.distantlandsmc.black_opal_paxel": "Black Opal Paxel",
+
+
+  "item.distantlandsmc.ruby": "Ruby",
+  "item.distantlandsmc.cursed_ruby": "Cursed Ruby",
+  "item.distantlandsmc.ruby_hammer": "Ruby Hammer",
+
+  "item.distantlandsmc.emerald_bow": "Emerald Bow",
+
+  "item.distantlandsmc.radiation_staff": "Radiation Staff",
+
+  "item.distantlandsmc.black_opal_water_bucket": "Black Opal Water Bucket",
+
+  "item.distantlandsmc.haru_boat": "Haru Boat",
+  "item.distantlandsmc.haru_chest_boat": "Haru Chest Boat",
+
+
+  "item.distantlandsmc.bar_brawl_music_disc": "Bar Brawl Music Disc",
+  "item.distantlandsmc.bar_brawl_music_disc.desc": "Bryan Tech - Bar Brawl (CC0)",
+
+  "block.distantlandsmc.black_opal_block": "Black Opal Block",
+  "block.distantlandsmc.raw_black_opal_block": "Raw Black Opal Block",
+
+  "block.distantlandsmc.black_opal_ore": "Black Opal Ore",
+  "block.distantlandsmc.black_opal_deepslate_ore": "Black Opal Deepslate Ore",
+  "block.distantlandsmc.black_opal_nether_ore": "Black Opal Nether Ore",
+  "block.distantlandsmc.black_opal_end_ore": "Black Opal End Ore",
+
+  "block.distantlandsmc.ruby_ore": "Ruby Ore",
+  "block.distantlandsmc.ruby_deepslate_ore": "Deepslate Ruby Ore",
+  "block.distantlandsmc.nether_cursed_ruby_ore": "Nether Cursed Ruby Ore",
+  "block.distantlandsmc.end_cursed_ruby_ore": "End Cursed Ruby Ore",
+
+  "block.distantlandsmc.magic_block": "Magic BLock",
+
+  "block.distantlandsmc.black_opal_stairs": "Black Opal Stairs",
+  "block.distantlandsmc.black_opal_slab": "Black Opal Slab",
+  "block.distantlandsmc.black_opal_button": "Black Opal Button",
+  "block.distantlandsmc.black_opal_pressure_plate": "Black Opal Pressure Plate",
+  "block.distantlandsmc.black_opal_fence": "Black Opal Fence",
+  "block.distantlandsmc.black_opal_fence_gate": "Black Opal Fence Gate",
+  "block.distantlandsmc.black_opal_wall": "Black Opal Wall",
+  "block.distantlandsmc.black_opal_door": "Black Opal Door",
+  "block.distantlandsmc.black_opal_trapdoor": "Black Opal Trapdoor",
+
+  "block.distantlandsmc.ruby_block": "Ruby Block",
+  "block.distantlandsmc.cursed_ruby_block": "Cursed Ruby Block",
+  "block.distantlandsmc.ruby_stairs": "Ruby Stairs",
+  "block.distantlandsmc.ruby_slab": "Ruby Slab",
+
+  "block.distantlandsmc.black_opal_lamp": "Black Opal Lamp",
+
+  "block.distantlandsmc.pedestal": "Pedestal",
+
+  "block.distantlandsmc.petunia": "Petunia",
+  "block.distantlandsmc.potted_petunia": "Potted Petunia",
+  "block.distantlandsmc.colored_leaves": "Colored Leaves",
+
+  "block.distantlandsmc.stick_ground": "Fallen Stick",
+
+  "block.distantlandsmc.pabble": "Few Pabbles",
+  "block.distantlandsmc.pabble_1": "Mid Pabbles",
+  "block.distantlandsmc.pabble_2": "Bunch of Pabbles",
+  "block.distantlandsmc.rock": "Rock",
+  "item.distantlandsmc.small_stone": "Small Stone",
+
+  "block.distantlandsmc.crystallizer": "Crystallizer",
+
+  "block.distantlandsmc.haru_log": "Haru Log",
+  "block.distantlandsmc.haru_wood": "Haru Wood",
+  "block.distantlandsmc.stripped_haru_log": "Stripped Haru Log",
+  "block.distantlandsmc.stripped_haru_wood": "Stripped Haru Wood",
+  "block.distantlandsmc.haru_planks": "Haru Planks",
+
+  "block.distantlandsmc.haru_stairs": "Haru Stairs",
+  "block.distantlandsmc.haru_slab": "Haru Slab",
+  "block.distantlandsmc.haru_button": "Haru Button",
+  "block.distantlandsmc.haru_fence": "Haru Fence",
+  "block.distantlandsmc.haru_fence_gate": "Haru Fence Gate",
+  "block.distantlandsmc.haru_door": "Haru Door",
+  "block.distantlandsmc.haru_trapdoor": "Haru Trapdoor",
+  "block.distantlandsmc.haru_pressure_plate": "Haru Pressure Plate",
+
+  "block.distantlandsmc.haru_sign": "Haru Sign",
+  "block.distantlandsmc.haru_hanging_sign": "Haru Hanging Sign",
+
+  "block.distantlandsmc.haru_leaves": "Haru Leaves",
+
+  "block.distantlandsmc.haru_sapling": "Haru Sapling",
+  "block.distantlandsmc.potted_haru_sapling": "Potted Haru Sapling",
+
+
+  "block.distantlandsmc.tomato_crop": "Tomato Crop",
+  "item.distantlandsmc.tomato_seeds": "Tomato Seeds",
+
+  "entity.minecraft.villager.distantlandsmc.kaupenger": "Kaupenger",
+
+  "painting.distantlandsmc.world.title": "World",
+  "painting.distantlandsmc.world.author": "NanoAttack",
+  "painting.distantlandsmc.shrimp.title": "Shrimp",
+  "painting.distantlandsmc.shrimp.author": "NanoAttack",
+  "painting.distantlandsmc.saw_them.title": "Saw Them",
+  "painting.distantlandsmc.saw_them.author": "NanoAttack",
+
+  "painting.distantlandsmc.wanderer.title": "Wanderer",
+  "painting.distantlandsmc.wanderer.author": "PlatinumG17",
+
+  "tooltip.distantlandsmc.chainsaw.tooltip.shift": "Press §eShift§r for more information!",
+  "tooltip.distantlandsmc.chainsaw.tooltip.1": "Cut down trees easily!",
+  "tooltip.distantlandsmc.chainsaw.tooltip.2": "§oDo not cut your friends!§r",
+  "tooltip.distantlandsmc.magic_block.tooltip.1": "This block is §9MAGICAL§r",
+  "tooltip.distantlandsmc.tomato.1": "Tomato; Tomato",
+
+  "item.distantlandsmc.metal_detector.no_valuables": "No Valuables found!",
+
+  "itemGroup.distantlandsmc.distant_lands_items_tab": "Distant Lands Items",
+  "itemGroup.distantlandsmc.distant_lands_blocks_tab": "Distant Lands Blocks",
+  "itemGroup.distantlandsmc.distant_lands_combat_tab": "Distant Lands Combat",
+
+  "sounds.distantlandsmc.chainsaw_cut": "Chainsaw Cutting Sound",
+  "sounds.distantlandsmc.chainsaw_pull": "Chainsaw Pulling Sound",
+
+  "enchantment.distantlandsmc.lightning_striker": "Lightning Striker",
+
+  "effect.distantlandsmc.slimey": "Slimey",
+  "item.minecraft.potion.effect.slimey_potion": "Slimey Potion",
+  "item.minecraft.splash_potion.effect.slimey_potion": "Slimey Splash Potion",
+  "item.minecraft.lingering_potion.effect.slimey_potion": "Slimey Lingering Potion",
+
+  "trim_pattern.distantlandsmc.beast": "Beast Armor Trim",
+  "trim_material.distantlandsmc.black_opal": "Black Opal Material "
+}

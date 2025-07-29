@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "distantlandsmc:item/data_tablet_off"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "distantlandsmc:on": 1
+      },
+      "model": "distantlandsmc:item/data_tablet_on"
+    }
+  ]
+}

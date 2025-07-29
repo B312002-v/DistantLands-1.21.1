@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "distantlandsmc:block/stick_ground"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "distantlandsmc:item/stick_ground_2d"
+    }
+  }
+}

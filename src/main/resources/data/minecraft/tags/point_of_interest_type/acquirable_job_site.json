@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "distantlandsmc:magic_poi",
+      "required": false
+    }
+  ]
+}
