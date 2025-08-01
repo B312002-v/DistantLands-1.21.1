@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "distantlandsmc:block/stripped_haru_hollow_log" },
+    "axis=x": { "model": "distantlandsmc:block/stripped_haru_hollow_log_side", "y": 90 },
+    "axis=z": { "model": "distantlandsmc:block/stripped_haru_hollow_log_side" }
+  }
+}

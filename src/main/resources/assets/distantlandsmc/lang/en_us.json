@@ -103,6 +103,31 @@
   "block.distantlandsmc.stripped_haru_wood": "Stripped Haru Wood",
   "block.distantlandsmc.haru_planks": "Haru Planks",
 
+  "block.distantlandsmc.haru_hollow_log": " Haru Hollow Log",
+  "block.distantlandsmc.stripped_haru_hollow_log": "Stripped Haru Hollow Log",
+
+  "block.distantlandsmc.haru_hollow_log_corner_botton": " Haru Hollow Log Corner Botton",
+  "block.distantlandsmc.haru_hollow_log_corner_top": " Haru Hollow Log Corner Top",
+
+  "block.distantlandsmc.haru_hollow_log_corner_tunnel_botton": " Haru Hollow Log Corner Tunnel Botton",
+  "block.distantlandsmc.haru_hollow_log_corner_tunnel_top": " Haru Hollow Log Corner Tunnel Top",
+
+
+  "block.distantlandsmc.haru_hollow_log_two_faces": "Haru Hollow Log L-Shaped",
+  "block.distantlandsmc.haru_hollow_log_two_faces_botton": "Haru Hollow Log L-Shaped Botton",
+  "block.distantlandsmc.haru_hollow_log_two_faces_top": "Haru Hollow Log L-Shaped Top",
+  "block.distantlandsmc.haru_hollow_log_two_faces_empty": "Haru Hollow Log L-Shaped Empty",
+
+  "block.distantlandsmc.haru_hollow_log_three_faces": "Haru Hollow Log T-Shaped",
+  "block.distantlandsmc.haru_hollow_log_three_faces_botton": "Haru Hollow Log T-Shaped Botton",
+  "block.distantlandsmc.haru_hollow_log_three_faces_top": "Haru Hollow Log T-Shaped Top",
+  "block.distantlandsmc.haru_hollow_log_three_faces_empty": "Haru Hollow Log T-Shaped Empty",
+
+  "block.distantlandsmc.haru_hollow_log_all_faces": "Haru Hollow Log All-Shaped",
+  "block.distantlandsmc.haru_hollow_log_all_faces_botton": "Haru Hollow Log All-Shaped Botton",
+  "block.distantlandsmc.haru_hollow_log_all_faces_top": "Haru Hollow Log All-Shaped Top",
+  "block.distantlandsmc.haru_hollow_log_all_faces_empty": "Haru Hollow Log All-Shaped Empty",
+
   "block.distantlandsmc.haru_stairs": "Haru Stairs",
   "block.distantlandsmc.haru_slab": "Haru Slab",
   "block.distantlandsmc.haru_button": "Haru Button",
@@ -159,5 +184,9 @@
   "item.minecraft.lingering_potion.effect.slimey_potion": "Slimey Lingering Potion",
 
   "trim_pattern.distantlandsmc.beast": "Beast Armor Trim",
-  "trim_material.distantlandsmc.black_opal": "Black Opal Material "
+  "trim_material.distantlandsmc.black_opal": "Black Opal Material",
+
+  "key.crawl": "Crawl",
+  "crawl.gui.options_title": "Crawl Options",
+  "crawl.config.replace_animation": "Replace Crawl Animation"
 }

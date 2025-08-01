@@ -123,6 +123,25 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.PABBLE_1.get());
                         pOutput.accept(ModBlocks.PABBLE_2.get());
                         pOutput.accept(ModBlocks.ROCK.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(ModBlocks.STRIPPED_HARU_HOLLOW_LOG.get());
+
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_EMPTY.get());
 
                     }).build());
 

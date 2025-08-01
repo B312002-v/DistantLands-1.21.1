@@ -1,0 +1,15 @@
+{
+	"package": "net.beastguy.distantlandsmc.common.crawl.client.mixin",
+	"minVersion": "0.8",
+	"required": true,
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"client": [
+		"ControlsScreenMixin",
+		"HumanoidModelMixin",
+		"LocalPlayerMixin",
+		"OptionsMixin",
+		"PlayerRendererMixin"
+	]
+}

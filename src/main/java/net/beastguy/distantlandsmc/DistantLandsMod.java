@@ -3,6 +3,7 @@ package net.beastguy.distantlandsmc;
 import net.beastguy.distantlandsmc.block.ModBlocks;
 import net.beastguy.distantlandsmc.block.entity.ModBlockEntities;
 import net.beastguy.distantlandsmc.block.entity.renderer.PedestalBlockEntityRenderer;
+import net.beastguy.distantlandsmc.common.crawl.Crawl;
 import net.beastguy.distantlandsmc.component.ModDataComponentTypes;
 import net.beastguy.distantlandsmc.effect.ModEffects;
 import net.beastguy.distantlandsmc.enchantment.ModEnchantmentEffects;
@@ -74,6 +75,8 @@ public class DistantLandsMod {
     public DistantLandsMod(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(DistantLandsMod::registerPacket);
+
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -100,12 +103,15 @@ public class DistantLandsMod {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PETUNIA.getId(), ModBlocks.POTTED_PETUNIA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HARU_SAPLING.getId(), ModBlocks.POTTED_HARU_SAPLING);
+
         });
 
         ModBiomes.registerBiomes();
@@ -121,6 +127,22 @@ public class DistantLandsMod {
             event.accept(ModItems.BLACK_OPAL);
             event.accept(ModItems.RAW_BLACK_OPAL);
         }
+    }
+
+    @SuppressWarnings("null")
+    public static void registerPacket(RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToServer(
+                Crawl.Payload.ID,
+                Crawl.Payload.CODEC,
+                (payload, context) -> {
+                    var server = context.player().getServer();
+                    server.execute(() -> context.player().getEntityData().set(Crawl.Shared.CRAWL_REQUEST, payload.crawl()));
+                }
+        );
+        Crawl.crawlRequestPacket = (wantsToCrawl) -> {
+            PacketDistributor.sendToServer(new Crawl.Payload(wantsToCrawl));
+        };
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

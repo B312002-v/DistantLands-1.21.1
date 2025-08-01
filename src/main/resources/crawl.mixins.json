@@ -1,0 +1,15 @@
+{
+	"package": "net.beastguy.distantlandsmc.common.crawl.mixin",
+	"minVersion": "0.8",
+	"required": true,
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"plugin": "net.beastguy.distantlandsmc.common.crawl.mixin.Plugin",
+	"mixins": [
+		"EntityMixin",
+		"LivingEntityMixin",
+		"PlayerMixin",
+		"PoseMixin"
+	]
+}
