@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:diamond"
+  },
+  "result": {
+    "id": "minecraft:diamond_block"
+  }
+}

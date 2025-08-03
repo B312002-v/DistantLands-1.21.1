@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "distantlandsmc:haru_log"
+  },
+  "result": {
+    "id": "distantlandsmc:haru_hollow_log"
+  }
+}

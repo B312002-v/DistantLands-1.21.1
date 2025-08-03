@@ -97,6 +97,9 @@
 
   "block.distantlandsmc.crystallizer": "Crystallizer",
 
+  "block.distantlandsmc.carpenter_table": "Carpenter Table",
+  "menu.distantlandsmc.carpenter_table": "Carpenter Table",
+
   "block.distantlandsmc.haru_log": "Haru Log",
   "block.distantlandsmc.haru_wood": "Haru Wood",
   "block.distantlandsmc.stripped_haru_log": "Stripped Haru Log",

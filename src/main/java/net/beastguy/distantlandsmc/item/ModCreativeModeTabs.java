@@ -97,6 +97,8 @@ public class ModCreativeModeTabs {
 
                         pOutput.accept(ModBlocks.CRYSTALLIZER);
 
+                        pOutput.accept(ModBlocks.CARPENTER_TABLE);
+
                         pOutput.accept(ModBlocks.HARU_LOG.get());
                         pOutput.accept(ModBlocks.HARU_WOOD.get());
                         pOutput.accept(ModBlocks.STRIPPED_HARU_LOG.get());

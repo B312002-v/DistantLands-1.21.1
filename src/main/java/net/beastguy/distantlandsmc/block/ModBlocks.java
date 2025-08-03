@@ -83,6 +83,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CRYSTALLIZER = registerBlock("crystallizer",
             () -> new CrystallizerBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 
+    public static final DeferredBlock<Block> CARPENTER_TABLE = registerBlock("carpenter_table",
+            () -> new CarpenterTableBlock(BlockBehaviour.Properties.of()));
+
     /** ORES -------------------------------------------------- */
 
     public static final DeferredBlock<Block> RUBY_ORE = registerBlock("ruby_ore",

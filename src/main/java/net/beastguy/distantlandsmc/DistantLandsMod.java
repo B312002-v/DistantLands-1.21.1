@@ -16,7 +16,9 @@ import net.beastguy.distantlandsmc.item.ModArmorMaterials;
 import net.beastguy.distantlandsmc.item.ModCreativeModeTabs;
 import net.beastguy.distantlandsmc.item.ModItems;
 import net.beastguy.distantlandsmc.potion.ModPotions;
+import net.beastguy.distantlandsmc.recipe.ModRecipeTypes;
 import net.beastguy.distantlandsmc.screen.ModMenuTypes;
+import net.beastguy.distantlandsmc.screen.custom.CarpenterTableScreen;
 import net.beastguy.distantlandsmc.screen.custom.PedestalScreen;
 import net.beastguy.distantlandsmc.sound.ModSounds;
 import net.beastguy.distantlandsmc.util.ModItemProperties;
@@ -84,7 +86,6 @@ public class DistantLandsMod {
         ModDataComponentTypes.register(modEventBus);
         ModSounds.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
         ModVillagers.register(modEventBus);
@@ -92,6 +93,8 @@ public class DistantLandsMod {
         ModFluids.register(modEventBus);
         ModEnchantmentEffects.register(modEventBus);
         ModEntity.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipeTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
@@ -166,6 +169,8 @@ public class DistantLandsMod {
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_BLACK_OPAL_WATER.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_BLACK_OPAL_WATER.get(), RenderType.translucent());
             });
+
+
         }
 
         @SubscribeEvent
@@ -194,6 +199,8 @@ public class DistantLandsMod {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
+            event.register(ModMenuTypes.CARPENTER_TABLE_MENU.get(), CarpenterTableScreen::new);
+
         }
 
     }
