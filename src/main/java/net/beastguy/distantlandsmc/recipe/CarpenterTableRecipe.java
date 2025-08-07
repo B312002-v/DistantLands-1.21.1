@@ -16,26 +16,30 @@ import org.jetbrains.annotations.NotNull;
 
 public record CarpenterTableRecipe(Ingredient inputItem, ItemStack output) implements Recipe<CarpenterTableRecipeInput> {
     // inputItem & output ==> Read From JSON File!
-    // GrowthChamberRecipeInput --> INVENTORY of the Block Entity
+    // CarpenterTableRecipeInput --> INVENTORY of the Block Entity
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
+    public @NotNull NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
         list.add(inputItem);
         return list;
     }
 
     @Override
-    public boolean matches(CarpenterTableRecipeInput carpenterTableRecipeInput, Level level) {
+    public boolean matches(@NotNull CarpenterTableRecipeInput carpenterTableRecipeInput, Level level) {
         if (level.isClientSide()) {
             return false;
         }
-
         return inputItem.test(carpenterTableRecipeInput.getItem(0));
     }
 
+    // método utilitário
+    public boolean matches(ItemStack stack) {
+        return inputItem.test(stack);
+    }
+
     @Override
-    public ItemStack assemble(CarpenterTableRecipeInput carpenterTableRecipeInput, HolderLookup.Provider provider) {
+    public @NotNull ItemStack assemble(@NotNull CarpenterTableRecipeInput carpenterTableRecipeInput, HolderLookup.@NotNull Provider provider) {
         return output.copy();
     }
 
@@ -45,17 +49,17 @@ public record CarpenterTableRecipe(Ingredient inputItem, ItemStack output) imple
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return output;
+    public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider provider) {
+        return output.copy();
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return ModRecipeTypes.CARPENTER_TABLE_SERIALIZER.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return ModRecipeTypes.CARPENTER_TABLE_TYPE.get();
     }
 
@@ -72,12 +76,12 @@ public record CarpenterTableRecipe(Ingredient inputItem, ItemStack output) imple
                         CarpenterTableRecipe::new);
 
         @Override
-        public MapCodec<CarpenterTableRecipe> codec() {
+        public @NotNull MapCodec<CarpenterTableRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, CarpenterTableRecipe> streamCodec() {
+        public @NotNull StreamCodec<RegistryFriendlyByteBuf, CarpenterTableRecipe> streamCodec() {
             return STREAM_CODEC;
         }
     }

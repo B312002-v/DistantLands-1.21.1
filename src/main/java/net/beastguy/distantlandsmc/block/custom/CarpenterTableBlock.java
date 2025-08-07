@@ -2,10 +2,8 @@ package net.beastguy.distantlandsmc.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.beastguy.distantlandsmc.block.entity.CarpenterTableBlockEntity;
-import net.beastguy.distantlandsmc.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -15,10 +13,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CarpenterTableBlock extends BaseEntityBlock {
@@ -29,23 +26,23 @@ public class CarpenterTableBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return new CarpenterTableBlockEntity(blockPos, blockState);
     }
 
     @Override
-    protected RenderShape getRenderShape(BlockState state) {
+    protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+    public void onRemove(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof CarpenterTableBlockEntity carpenterTableBlockEntity) {
@@ -57,12 +54,12 @@ public class CarpenterTableBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos,
-                                              Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack pStack, @NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos,
+                                                       @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHitResult) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof CarpenterTableBlockEntity carpenterTableBlockEntity) {
-                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(carpenterTableBlockEntity, Component.literal("Carpenter Table")), pPos);
+                pPlayer.openMenu(new SimpleMenuProvider(carpenterTableBlockEntity, Component.literal("Carpenter Table")), pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -70,6 +67,4 @@ public class CarpenterTableBlock extends BaseEntityBlock {
 
         return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
     }
-
 }
-

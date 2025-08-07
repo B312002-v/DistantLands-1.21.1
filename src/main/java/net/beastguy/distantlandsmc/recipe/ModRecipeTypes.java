@@ -9,13 +9,13 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModRecipeTypes {
+    // Registro de serializers e tipos com base no MODID
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, DistantLandsMod.MODID);
     public static final DeferredRegister<RecipeType<?>> TYPES =
             DeferredRegister.create(Registries.RECIPE_TYPE, DistantLandsMod.MODID);
 
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<CarpenterTableRecipe>> CARPENTER_TABLE_SERIALIZER =
-            SERIALIZERS.register("carpenter_table", CarpenterTableRecipe.Serializer::new);
+    // Tipo da receita Carpenter Table
     public static final DeferredHolder<RecipeType<?>, RecipeType<CarpenterTableRecipe>> CARPENTER_TABLE_TYPE =
             TYPES.register("carpenter_table", () -> new RecipeType<>() {
                 @Override
@@ -23,6 +23,10 @@ public class ModRecipeTypes {
                     return "carpenter_table";
                 }
             });
+
+    // Serializador da receita Carpenter Table
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<CarpenterTableRecipe>> CARPENTER_TABLE_SERIALIZER =
+            SERIALIZERS.register("carpenter_table", CarpenterTableRecipe.Serializer::new);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

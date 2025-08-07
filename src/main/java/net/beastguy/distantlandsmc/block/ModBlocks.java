@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -84,7 +85,7 @@ public class ModBlocks {
             () -> new CrystallizerBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> CARPENTER_TABLE = registerBlock("carpenter_table",
-            () -> new CarpenterTableBlock(BlockBehaviour.Properties.of()));
+            () -> new CarpenterTableBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     /** ORES -------------------------------------------------- */
 
@@ -247,17 +248,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> HARU_PLANKS = registerBlock("haru_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
                 @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return true;
                 }
 
                 @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return 20;
                 }
 
                 @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return 5;
                 }
             });
@@ -307,17 +308,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> HARU_LEAVES = registerBlock("haru_leaves",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES)) {
                 @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return true;
                 }
 
                 @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return 60;
                 }
 
                 @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return 30;
                 }
             });
