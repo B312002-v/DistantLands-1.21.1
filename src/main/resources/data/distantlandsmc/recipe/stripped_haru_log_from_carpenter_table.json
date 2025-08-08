@@ -1,9 +1,9 @@
 {
   "type": "distantlandsmc:carpenter_table",
   "ingredient": {
-    "item": "minecraft:diamond"
+    "item": "distantlandsmc:haru_log"
   },
   "result": {
-    "id": "minecraft:diamond_block"
+    "id": "distantlandsmc:stripped_haru_log"
   }
 }

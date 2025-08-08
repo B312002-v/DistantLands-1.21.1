@@ -1,88 +1,84 @@
 package net.beastguy.distantlandsmc.recipe;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
+import net.beastguy.distantlandsmc.block.ModBlocks;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public record CarpenterTableRecipe(Ingredient inputItem, ItemStack output) implements Recipe<CarpenterTableRecipeInput> {
-    // inputItem & output ==> Read From JSON File!
-    // CarpenterTableRecipeInput --> INVENTORY of the Block Entity
+public class CarpenterTableRecipe extends SingleItemRecipe {
+    private final int inputCount;
 
-    @Override
-    public @NotNull NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> list = NonNullList.create();
-        list.add(inputItem);
-        return list;
-    }
-
-    @Override
-    public boolean matches(@NotNull CarpenterTableRecipeInput carpenterTableRecipeInput, Level level) {
-        if (level.isClientSide()) {
-            return false;
+    public CarpenterTableRecipe(String group, Ingredient ingredient, ItemStack itemStack, int inputCount) {
+        super(ModRecipeTypes.CARPENTER_TABLE_TYPE.get(), ModRecipeTypes.CARPENTER_TABLE_SERIALIZER.get(),
+                group, ingredient, itemStack);
+        if (inputCount > 64) {
+            throw new IllegalArgumentException("Input count for wood cutting recipe is too high: " + inputCount + ". Ingredient: " + ingredient + ", Result: " + itemStack);
         }
-        return inputItem.test(carpenterTableRecipeInput.getItem(0));
+        this.inputCount = inputCount;
+
     }
 
-    // método utilitário
-    public boolean matches(ItemStack stack) {
-        return inputItem.test(stack);
-    }
-
-    @Override
-    public @NotNull ItemStack assemble(@NotNull CarpenterTableRecipeInput carpenterTableRecipeInput, HolderLookup.@NotNull Provider provider) {
-        return output.copy();
+    public int getInputCount() {
+        return inputCount;
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
-        return true;
+    public boolean matches(SingleRecipeInput container, @NotNull Level level) {
+        ItemStack item = container.getItem(0);
+        return this.ingredient.test(item) && item.getCount() >= inputCount;
     }
 
     @Override
-    public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider provider) {
-        return output.copy();
+    public @NotNull ItemStack getToastSymbol() {
+        return new ItemStack(ModBlocks.CARPENTER_TABLE.get());
     }
 
     @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.CARPENTER_TABLE_SERIALIZER.get();
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return ModRecipeTypes.CARPENTER_TABLE_TYPE.get();
+    public boolean isSpecial() {
+        return true; //for recipe book
     }
 
     public static class Serializer implements RecipeSerializer<CarpenterTableRecipe> {
-        public static final MapCodec<CarpenterTableRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(CarpenterTableRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(CarpenterTableRecipe::output)
-        ).apply(inst, CarpenterTableRecipe::new));
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, CarpenterTableRecipe> STREAM_CODEC =
-                StreamCodec.composite(
-                        Ingredient.CONTENTS_STREAM_CODEC, CarpenterTableRecipe::inputItem,
-                        ItemStack.STREAM_CODEC, CarpenterTableRecipe::output,
-                        CarpenterTableRecipe::new);
+        private final MapCodec<CarpenterTableRecipe> codec;
+        private final StreamCodec<RegistryFriendlyByteBuf, CarpenterTableRecipe> streamCodec;
+
+        public Serializer() {
+
+            this.codec = RecordCodecBuilder.mapCodec(
+                    instance -> instance.group(
+                                    Codec.STRING.optionalFieldOf("group", "").forGetter(arg -> arg.group),
+                                    Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(arg -> arg.ingredient),
+                                    ItemStack.STRICT_CODEC.fieldOf("result").forGetter(arg -> arg.result),
+                                    ExtraCodecs.POSITIVE_INT.optionalFieldOf("ingredient_count", 1).forGetter(arg -> arg.inputCount)
+                            )
+                            .apply(instance, CarpenterTableRecipe::new)
+            );
+            this.streamCodec = StreamCodec.composite(
+                    ByteBufCodecs.STRING_UTF8, arg -> arg.group,
+                    Ingredient.CONTENTS_STREAM_CODEC, arg -> arg.ingredient,
+                    ItemStack.STREAM_CODEC, arg -> arg.result,
+                    ByteBufCodecs.VAR_INT, arg -> arg.inputCount,
+                    CarpenterTableRecipe::new
+            );
+        }
 
         @Override
         public @NotNull MapCodec<CarpenterTableRecipe> codec() {
-            return CODEC;
+            return codec;
         }
 
         @Override
         public @NotNull StreamCodec<RegistryFriendlyByteBuf, CarpenterTableRecipe> streamCodec() {
-            return STREAM_CODEC;
+            return streamCodec;
         }
     }
 }

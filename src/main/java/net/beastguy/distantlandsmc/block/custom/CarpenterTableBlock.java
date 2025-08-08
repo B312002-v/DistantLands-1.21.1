@@ -1,70 +1,142 @@
-package net.beastguy.distantlandsmc.block.custom;
+    package net.beastguy.distantlandsmc.block.custom;
 
-import com.mojang.serialization.MapCodec;
-import net.beastguy.distantlandsmc.block.entity.CarpenterTableBlockEntity;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+    import net.beastguy.distantlandsmc.screen.custom.CarpenterTableMenu;
+    import net.minecraft.core.BlockPos;
+    import net.minecraft.core.Direction;
+    import net.minecraft.network.chat.Component;
+    import net.minecraft.world.*;
+    import net.minecraft.world.entity.player.Player;
+    import net.minecraft.world.inventory.ContainerLevelAccess;
+    import net.minecraft.world.item.context.BlockPlaceContext;
+    import net.minecraft.world.level.BlockGetter;
+    import net.minecraft.world.level.Level;
+    import net.minecraft.world.level.block.*;
+    import net.minecraft.world.level.block.state.BlockState;
+    import net.minecraft.world.level.block.state.StateDefinition;
+    import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+    import net.minecraft.world.level.block.state.properties.BooleanProperty;
+    import net.minecraft.world.level.block.state.properties.DirectionProperty;
+    import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+    import net.minecraft.world.level.material.MapColor;
+    import net.minecraft.world.phys.BlockHitResult;
+    import net.minecraft.world.phys.shapes.CollisionContext;
+    import net.minecraft.world.phys.shapes.Shapes;
+    import net.minecraft.world.phys.shapes.VoxelShape;
+    import org.jetbrains.annotations.NotNull;
 
-public class CarpenterTableBlock extends BaseEntityBlock {
-    public static final MapCodec<CarpenterTableBlock> CODEC = simpleCodec(CarpenterTableBlock::new);
+    import javax.annotation.Nullable;
 
-    public CarpenterTableBlock(Properties properties) {
-        super(properties);
-    }
+    public class CarpenterTableBlock extends Block {
 
-    @Override
-    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
+        private static final Component CONTAINER_TITLE = Component.translatable("container.carpenter_table");
 
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return new CarpenterTableBlockEntity(blockPos, blockState);
-    }
+        public static final BooleanProperty BOTTOM = BlockStateProperties.BOTTOM;
+        public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    @Override
-    protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
-        return RenderShape.MODEL;
-    }
+        // Definindo as partes do modelo com caixas (valores aproximados do seu JSON)
+        private static final VoxelShape PART_1 = Block.box(0, 8, 0, 16, 14, 16);    // mesa superior
+        private static final VoxelShape PART_2 = Block.box(2, 14, 8, 14, 20, 9);    // barra central (ajustado para profundidade 1)
+        private static final VoxelShape PART_3 = Block.box(13, 0, 0, 16, 8, 3);     // perna direita frontal
+        private static final VoxelShape PART_4 = Block.box(0, 0, 0, 3, 8, 3);       // perna esquerda frontal
+        private static final VoxelShape PART_5 = Block.box(0, 0, 13, 3, 8, 16);     // perna esquerda traseira
+        private static final VoxelShape PART_6 = Block.box(13, 0, 13, 16, 8, 16);   // perna direita traseira
 
-    @Override
-    public void onRemove(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof CarpenterTableBlockEntity carpenterTableBlockEntity) {
-                carpenterTableBlockEntity.drops();
-            }
+        private static final VoxelShape SHAPE_BOTTOM = Shapes.or(PART_1, PART_2, PART_3, PART_4, PART_5, PART_6);
+
+        // Hitbox para BOTTOM = false (exemplo, ajuste conforme necessário)
+        private static final VoxelShape SHAPE_TOP_PART1 = Block.box(0, 9, 0, 16, 16, 16);
+        private static final VoxelShape SHAPE_TOP_PART2 = Block.box(6, 0, 0, 10, 9, 16);
+        private static final VoxelShape SHAPE_TOP = Shapes.or(SHAPE_TOP_PART1, SHAPE_TOP_PART2);
+
+
+
+        public CarpenterTableBlock() {
+            super(Properties.of()
+                    .destroyTime(2.5f)
+                    .explosionResistance(2.5f)
+                    .sound(SoundType.WOOD)
+                    .mapColor(MapColor.WOOD)
+                    .instrument(NoteBlockInstrument.BASS));
+            this.registerDefaultState(this.stateDefinition.any()
+                    .setValue(FACING, Direction.NORTH)
+                    .setValue(BOTTOM, true));
         }
 
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-    }
+        @Override
+        public @NotNull BlockState rotate(BlockState state, Rotation rotation) {
+            return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+        }
 
-    @Override
-    protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack pStack, @NotNull BlockState pState, Level pLevel, @NotNull BlockPos pPos,
-                                                       @NotNull Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof CarpenterTableBlockEntity carpenterTableBlockEntity) {
-                pPlayer.openMenu(new SimpleMenuProvider(carpenterTableBlockEntity, Component.literal("Carpenter Table")), pPos);
+        @Override
+        protected @NotNull BlockState mirror(@NotNull BlockState state, @NotNull Mirror mirror) {
+            return state;
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(FACING, BOTTOM);
+        }
+
+        @Override
+        public BlockState getStateForPlacement(@NotNull BlockPlaceContext context) {
+            BlockState state = this.defaultBlockState()
+                    .setValue(FACING, context.getHorizontalDirection().getOpposite());
+            BlockPos pos = context.getClickedPos();
+            Direction face = context.getClickedFace();
+            double clickY = context.getClickLocation().y - pos.getY();
+            return face != Direction.DOWN && (face == Direction.UP || clickY <= 0.5) ? state : state.setValue(BOTTOM, false);
+        }
+
+        @Override
+        protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hitResult) {
+            if (level.isClientSide) {
+                return InteractionResult.SUCCESS;
             } else {
-                throw new IllegalStateException("Our Container provider is missing!");
+                player.openMenu(state.getMenuProvider(level, pos));
+                return InteractionResult.CONSUME;
             }
         }
 
-        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
+        @Nullable
+        public MenuProvider getMenuProvider(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
+            return new SimpleMenuProvider((i, inventory, player) ->
+                    new CarpenterTableMenu(i, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE);
+        }
+
+        @Override
+        public @NotNull VoxelShape getShape(BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+            VoxelShape baseShape = state.getValue(BOTTOM) ? SHAPE_BOTTOM : SHAPE_TOP;
+            Direction facing = state.getValue(FACING);
+            return rotateShape(facing, baseShape);
+        }
+
+        @Override
+        public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+            return getShape(state, level, pos, context);
+        }
+
+        // Rotaciona a VoxelShape de acordo com a diferença entre as direções (rotação em 90° no eixo Y)
+        private static VoxelShape rotateShape(Direction to, VoxelShape shape) {
+            if (Direction.NORTH == to) return shape;
+
+            VoxelShape[] buffer = new VoxelShape[] {shape, Shapes.empty()};
+            int times = (to.get2DDataValue() - Direction.NORTH.get2DDataValue() + 4) % 4;
+
+            for (int i = 0; i < times; i++) {
+                buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
+                    // Rotação 90° no eixo Y: (x, z) → (1 - z, x)
+                    buffer[1] = Shapes.or(buffer[1], Shapes.box(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX));
+                });
+                buffer[0] = buffer[1];
+                buffer[1] = Shapes.empty();
+            }
+
+            return buffer[0];
+        }
+
+        @Override
+        public boolean useShapeForLightOcclusion(@NotNull BlockState state) {
+            return true;
+        }
+
     }
-}

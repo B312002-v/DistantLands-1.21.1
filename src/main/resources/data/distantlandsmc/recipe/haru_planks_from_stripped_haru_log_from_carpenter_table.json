@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "distantlandsmc:stripped_haru_log"
+  },
+  "result": {
+    "id": "distantlandsmc:haru_planks",
+    "count": 4
+  }
+}

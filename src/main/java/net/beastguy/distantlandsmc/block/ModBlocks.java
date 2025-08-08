@@ -85,7 +85,7 @@ public class ModBlocks {
             () -> new CrystallizerBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> CARPENTER_TABLE = registerBlock("carpenter_table",
-            () -> new CarpenterTableBlock(BlockBehaviour.Properties.of().noOcclusion()));
+            CarpenterTableBlock::new);
 
     /** ORES -------------------------------------------------- */
 
@@ -125,13 +125,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> COLORED_LEAVES = registerBlock("colored_leaves",
             () -> new Block(BlockBehaviour.Properties.of().noOcclusion()));
 
+
+
     public static final DeferredBlock<Block> HARU_LOG = registerBlock("haru_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LOG)));
 
     public static final DeferredBlock<Block> HARU_HOLLOW_LOG = registerBlock("haru_hollow_log",
-            ModFlammableRotatedPillarHollowBlock::new);
-
-    public static final DeferredBlock<Block> STRIPPED_HARU_HOLLOW_LOG = registerBlock("stripped_haru_hollow_log",
             ModFlammableRotatedPillarHollowBlock::new);
 
     public static final DeferredBlock<Block> HARU_HOLLOW_LOG_CORNER_BOTTON = registerBlock(
@@ -232,14 +231,16 @@ public class ModBlocks {
             )
     );
 
-
     public static final DeferredBlock<Block> HARU_WOOD = registerBlock("haru_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+
 
 
     public static final DeferredBlock<Block> STRIPPED_HARU_LOG = registerBlock("stripped_haru_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_LOG)));
 
+    public static final DeferredBlock<Block> STRIPPED_HARU_HOLLOW_LOG = registerBlock("stripped_haru_hollow_log",
+            ModFlammableRotatedPillarHollowBlock::new);
 
     public static final DeferredBlock<Block> STRIPPED_HARU_WOOD = registerBlock("stripped_haru_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));

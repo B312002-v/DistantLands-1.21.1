@@ -17,14 +17,14 @@ public class ModMenuTypes {
             DeferredRegister.create(Registries.MENU, DistantLandsMod.MODID);
 
     public static final DeferredHolder<MenuType<?>, MenuType<PedestalMenu>> PEDESTAL_MENU =
-            registerMenuType("pedestal_menu", PedestalMenu::new);
+            registerMenuType(PedestalMenu::new);
 
     public static final DeferredHolder<MenuType<?>, MenuType<CarpenterTableMenu>> CARPENTER_TABLE_MENU =
-            registerMenuType("carpenter_table_menu", CarpenterTableMenu::new);
+            MENUS.register("carpenter_table_menu", () -> IMenuTypeExtension.create(CarpenterTableMenu::new));
 
     private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(
-            String name, IContainerFactory<T> factory) {
-        return MENUS.register(name, () -> IMenuTypeExtension.create(factory));
+            IContainerFactory<T> factory) {
+        return MENUS.register("pedestal_menu", () -> IMenuTypeExtension.create(factory));
     }
 
     public static void register(IEventBus eventBus) {

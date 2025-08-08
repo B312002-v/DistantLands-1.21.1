@@ -15,9 +15,13 @@ import net.beastguy.distantlandsmc.fluid.ModFluids;
 import net.beastguy.distantlandsmc.item.ModArmorMaterials;
 import net.beastguy.distantlandsmc.item.ModCreativeModeTabs;
 import net.beastguy.distantlandsmc.item.ModItems;
+import net.beastguy.distantlandsmc.payloads.CarpenterTableOpenPayload;
+import net.beastguy.distantlandsmc.payloads.SyncRecipeOrderPayload;
 import net.beastguy.distantlandsmc.potion.ModPotions;
 import net.beastguy.distantlandsmc.recipe.ModRecipeTypes;
+import net.beastguy.distantlandsmc.recipe.RecipeSorter;
 import net.beastguy.distantlandsmc.screen.ModMenuTypes;
+import net.beastguy.distantlandsmc.screen.custom.CarpenterTableMenu;
 import net.beastguy.distantlandsmc.screen.custom.CarpenterTableScreen;
 import net.beastguy.distantlandsmc.screen.custom.PedestalScreen;
 import net.beastguy.distantlandsmc.sound.ModSounds;
@@ -29,7 +33,10 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -140,12 +147,44 @@ public class DistantLandsMod {
                 Crawl.Payload.CODEC,
                 (payload, context) -> {
                     var server = context.player().getServer();
-                    server.execute(() -> context.player().getEntityData().set(Crawl.Shared.CRAWL_REQUEST, payload.crawl()));
+                    if (server != null) {
+                        server.execute(() -> context.player().getEntityData().set(Crawl.Shared.CRAWL_REQUEST, payload.crawl()));
+                    }
                 }
         );
-        Crawl.crawlRequestPacket = (wantsToCrawl) -> {
-            PacketDistributor.sendToServer(new Crawl.Payload(wantsToCrawl));
-        };
+        Crawl.crawlRequestPacket = (wantsToCrawl) -> PacketDistributor.sendToServer(new Crawl.Payload(wantsToCrawl));
+
+        registrar.playToServer(
+                CarpenterTableOpenPayload.ID,
+                CarpenterTableOpenPayload.CODEC,
+                (payload, context) -> {
+                    var server = context.player().getServer();
+                    if (server == null) return;
+
+                    server.execute(() -> {
+                        var player = context.player();
+                        var level = player.level();
+
+                        if (level.getBlockState(payload.pos()).getBlock() == ModBlocks.CARPENTER_TABLE.get()) {
+                            player.openMenu(new SimpleMenuProvider(
+                                    (containerId, inventory, p) -> new CarpenterTableMenu(
+                                            containerId,
+                                            inventory,
+                                            ContainerLevelAccess.create(p.level(), payload.pos()) // <-- cria o ContainerLevelAccess aqui
+                                    ),
+                                    Component.translatable("container.carpenter_table")
+                            ));
+                        }
+                    });
+                }
+        );
+
+        // Sincronizar ordem das receitas (server → client)
+        registrar.playToClient(
+                SyncRecipeOrderPayload.TYPE,
+                SyncRecipeOrderPayload.CODEC,
+                (payload, context) -> context.enqueueWork(() -> RecipeSorter.acceptOrder(payload.list()))
+        );
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -168,6 +207,8 @@ public class DistantLandsMod {
             event.enqueueWork(() -> {
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_BLACK_OPAL_WATER.get(), RenderType.translucent());
                 ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_BLACK_OPAL_WATER.get(), RenderType.translucent());
+
+
             });
 
 

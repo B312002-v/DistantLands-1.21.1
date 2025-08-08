@@ -1,7 +1,8 @@
 {
   "variants": {
-    "": {
-      "model": "distantlandsmc:block/carpenter_table"
-    }
+    "facing=north": { "model": "distantlandsmc:block/carpenter_table", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/carpenter_table", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/carpenter_table", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/carpenter_table", "y": 270 }
   }
 }
