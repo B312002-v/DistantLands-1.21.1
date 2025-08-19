@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "distantlandsmc:haru_log",
+    "distantlandsmc:haru_wood",
+    "distantlandsmc:stripped_haru_log",
+    "distantlandsmc:stripped_haru_wood",
+    "distantlandsmc:haru_planks"
+  ]
+}

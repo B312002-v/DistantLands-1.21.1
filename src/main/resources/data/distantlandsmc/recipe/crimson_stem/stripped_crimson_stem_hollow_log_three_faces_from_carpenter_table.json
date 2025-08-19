@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:crimson_stem"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_crimson_stem_hollow_log_three_faces"
+  }
+}

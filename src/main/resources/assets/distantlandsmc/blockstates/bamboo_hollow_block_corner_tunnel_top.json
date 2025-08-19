@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/bamboo_hollow_block_corner_tunnel_top", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/bamboo_hollow_block_corner_tunnel_top", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/bamboo_hollow_block_corner_tunnel_top", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/bamboo_hollow_block_corner_tunnel_top", "y": 270 }
+  }
+}

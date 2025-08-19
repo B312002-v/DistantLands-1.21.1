@@ -7,6 +7,9 @@
     import net.minecraft.world.*;
     import net.minecraft.world.entity.player.Player;
     import net.minecraft.world.inventory.ContainerLevelAccess;
+    import net.minecraft.world.item.Item;
+    import net.minecraft.world.item.ItemStack;
+    import net.minecraft.world.item.TooltipFlag;
     import net.minecraft.world.item.context.BlockPlaceContext;
     import net.minecraft.world.level.BlockGetter;
     import net.minecraft.world.level.Level;
@@ -25,6 +28,7 @@
     import org.jetbrains.annotations.NotNull;
 
     import javax.annotation.Nullable;
+    import java.util.List;
 
     public class CarpenterTableBlock extends Block {
 
@@ -35,13 +39,13 @@
 
         // Definindo as partes do modelo com caixas (valores aproximados do seu JSON)
         private static final VoxelShape PART_1 = Block.box(0, 8, 0, 16, 14, 16);    // mesa superior
-        private static final VoxelShape PART_2 = Block.box(2, 14, 8, 14, 20, 9);    // barra central (ajustado para profundidade 1)
+        //private static final VoxelShape PART_2 = Block.box(2, 14, 8, 14, 20, 9);    // barra central (ajustado para profundidade 1)
         private static final VoxelShape PART_3 = Block.box(13, 0, 0, 16, 8, 3);     // perna direita frontal
         private static final VoxelShape PART_4 = Block.box(0, 0, 0, 3, 8, 3);       // perna esquerda frontal
         private static final VoxelShape PART_5 = Block.box(0, 0, 13, 3, 8, 16);     // perna esquerda traseira
         private static final VoxelShape PART_6 = Block.box(13, 0, 13, 16, 8, 16);   // perna direita traseira
 
-        private static final VoxelShape SHAPE_BOTTOM = Shapes.or(PART_1, PART_2, PART_3, PART_4, PART_5, PART_6);
+        private static final VoxelShape SHAPE_BOTTOM = Shapes.or(PART_1, PART_3, PART_4, PART_5, PART_6);
 
         // Hitbox para BOTTOM = false (exemplo, ajuste conforme necessário)
         private static final VoxelShape SHAPE_TOP_PART1 = Block.box(0, 9, 0, 16, 16, 16);
@@ -137,6 +141,12 @@
         @Override
         public boolean useShapeForLightOcclusion(@NotNull BlockState state) {
             return true;
+        }
+
+        @Override
+        public void appendHoverText(@NotNull ItemStack stack, Item.@NotNull TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+            tooltipComponents.add(Component.translatable("tooltip.distantlandsmc.carpenter_table.tooltip"));
+            super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         }
 
     }

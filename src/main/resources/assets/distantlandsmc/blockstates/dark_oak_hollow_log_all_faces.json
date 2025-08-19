@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/dark_oak_hollow_log_all_faces", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/dark_oak_hollow_log_all_faces", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/dark_oak_hollow_log_all_faces", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/dark_oak_hollow_log_all_faces", "y": 270 }
+  }
+}

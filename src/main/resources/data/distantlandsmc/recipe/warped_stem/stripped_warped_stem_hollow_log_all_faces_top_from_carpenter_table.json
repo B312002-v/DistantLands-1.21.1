@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:warped_stem"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_warped_stem_hollow_log_all_faces_top"
+  }
+}

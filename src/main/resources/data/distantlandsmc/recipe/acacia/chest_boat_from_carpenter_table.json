@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:acacia_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:acacia_chest_boat",
+	"count": 1
+  }
+}

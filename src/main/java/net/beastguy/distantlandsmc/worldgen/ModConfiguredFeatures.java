@@ -140,7 +140,7 @@ public class ModConfiguredFeatures {
                                 .add(ModBlocks.STICK_GROUND.get().defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), 1)
                                 .add(ModBlocks.STICK_GROUND.get().defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), 1)
                                 .add(ModBlocks.STICK_GROUND.get().defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), 1)
-                                .add(ModBlocks.PABBLE.get().defaultBlockState(), 5)
+                                .add(ModBlocks.PABBLE.get().defaultBlockState(), 4)
                                 .add(ModBlocks.PABBLE_1.get().defaultBlockState(), 4)
                                 .add(ModBlocks.PABBLE_2.get().defaultBlockState(), 3)
                                 .add(ModBlocks.ROCK.get().defaultBlockState(), 1)

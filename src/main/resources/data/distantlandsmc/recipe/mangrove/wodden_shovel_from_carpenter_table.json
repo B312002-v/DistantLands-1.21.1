@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:mangrove_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:wooden_shovel",
+	"count": 1
+  }
+}

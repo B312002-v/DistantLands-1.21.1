@@ -15,4 +15,6 @@ public record FilterableRecipe(RecipeHolder<CarpenterTableRecipe> recipe, ItemSt
     public boolean matchFilter(String filter) {
         return output.getDisplayName().getString().toLowerCase(Locale.ROOT).contains(filter);
     }
+
+
 }

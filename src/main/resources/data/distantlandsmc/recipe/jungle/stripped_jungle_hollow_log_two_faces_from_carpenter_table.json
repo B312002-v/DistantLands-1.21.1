@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:jungle_log"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_jungle_hollow_log_two_faces"
+  }
+}

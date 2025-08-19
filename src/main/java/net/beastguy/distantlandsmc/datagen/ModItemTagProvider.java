@@ -11,6 +11,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,7 +23,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         tag(ModTags.Items.TRANSFORMABLE_ITEMS)
                 .add(ModItems.BLACK_OPAL.get())
                 .add(Items.COAL)
@@ -70,5 +71,32 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         this.tag(ItemTags.CHEST_BOATS)
                 .add(ModItems.HARU_CHEST_BOAT.get());
+
+        this.tag(ModTags.Items.BOWL)
+                .add(Items.BOWL);
+
+        this.tag(ModTags.Items.STICK)
+                .add(Items.STICK);
+
+        this.tag(ModTags.Items.BOAT)
+                .addTag(ItemTags.BOATS);
+
+        this.tag(ModTags.Items.CHEST_BOAT)
+                .addTag(ItemTags.CHEST_BOATS);
+
+        this.tag(ModTags.Items.WOODEN_SWORD)
+                .add(Items.WOODEN_SWORD);
+
+        this.tag(ModTags.Items.WOODEN_PICKAXE)
+                .add(Items.WOODEN_PICKAXE);
+
+        this.tag(ModTags.Items.WOODEN_AXE)
+                .add(Items.WOODEN_AXE);
+
+        this.tag(ModTags.Items.WOODEN_SHOVEL)
+                .add(Items.WOODEN_SHOVEL);
+
+        this.tag(ModTags.Items.WOODEN_HOE)
+                .add(Items.WOODEN_HOE);
     }
 }

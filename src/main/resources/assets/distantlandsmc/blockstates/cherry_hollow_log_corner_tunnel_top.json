@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/cherry_hollow_log_corner_tunnel_top", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/cherry_hollow_log_corner_tunnel_top", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/cherry_hollow_log_corner_tunnel_top", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/cherry_hollow_log_corner_tunnel_top", "y": 270 }
+  }
+}

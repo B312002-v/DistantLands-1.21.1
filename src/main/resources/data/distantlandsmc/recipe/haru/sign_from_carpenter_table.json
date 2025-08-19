@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:haru_wood_sources"
+  },
+  "result": {
+    "id": "distantlandsmc:haru_sign",
+	"count": 4
+  }
+}

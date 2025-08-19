@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "distantlandsmc:stripped_haru_log"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_haru_hollow_log_two_faces_top"
+  }
+}

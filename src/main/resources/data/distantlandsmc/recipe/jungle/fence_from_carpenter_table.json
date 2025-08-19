@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:jungle_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:jungle_fence",
+	"count": 4
+  }
+}

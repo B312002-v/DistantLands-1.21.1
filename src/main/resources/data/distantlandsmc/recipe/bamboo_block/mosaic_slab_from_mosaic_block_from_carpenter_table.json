@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:bamboo_mosaic"
+  },
+  "result": {
+    "id": "minecraft:bamboo_mosaic_slab",
+	"count": 4
+  }
+}

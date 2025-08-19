@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:mangrove_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:mangrove_sign",
+	"count": 4
+  }
+}

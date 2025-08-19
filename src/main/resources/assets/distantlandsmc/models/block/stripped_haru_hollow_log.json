@@ -5,7 +5,7 @@
     "0": "distantlandsmc:block/stripped_haru_log",
     "1": "distantlandsmc:block/stripped_haru_log_top",
     "2": "distantlandsmc:block/stripped_haru_log",
-    "particle": "distantlandsmc:block/haru_log"
+    "particle": "distantlandsmc:block/stripped_haru_log"
   },
   "elements": [
     {

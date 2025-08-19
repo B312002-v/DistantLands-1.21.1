@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
@@ -121,6 +122,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(pRecipeOutput, CURSED_RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.CURSED_RUBY.get(), 0.25f, 200, "cursed_ruby");
         oreBlasting(pRecipeOutput, CURSED_RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.CURSED_RUBY.get(), 0.25f, 100, "cursed_ruby");
+
+        /** FUNCTIONAL BLOCKS ------------------------------- */
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CARPENTER_TABLE.get())
+                .pattern(" I ")
+                .pattern("PPP")
+                .pattern("L L")
+                .define('I', Items.IRON_INGOT)
+                .define('P', ItemTags.PLANKS)
+                .define('L', ItemTags.LOGS)
+                .unlockedBy("has_iron", has(Items.IRON_INGOT)).save(pRecipeOutput);
 
         /** BUILDING BLOCKS ------------------------------- */
 

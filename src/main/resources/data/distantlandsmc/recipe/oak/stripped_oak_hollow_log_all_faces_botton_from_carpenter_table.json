@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:oak_log"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_oak_hollow_log_all_faces_botton"
+  }
+}

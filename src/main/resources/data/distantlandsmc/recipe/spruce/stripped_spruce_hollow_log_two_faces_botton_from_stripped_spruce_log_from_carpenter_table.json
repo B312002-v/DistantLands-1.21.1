@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:stripped_spruce_log"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_spruce_hollow_log_two_faces_botton"
+  }
+}

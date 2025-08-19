@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:cherry_log"
+  },
+  "result": {
+    "id": "minecraft:stripped_cherry_log"
+  }
+}

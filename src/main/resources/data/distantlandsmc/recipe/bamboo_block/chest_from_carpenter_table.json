@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:bamboo_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:chest",
+	"count": 1
+  }
+}

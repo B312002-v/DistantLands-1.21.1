@@ -1,6 +1,6 @@
 package net.beastguy.distantlandsmc.block.custom;
 
-import net.beastguy.distantlandsmc.block.ModBlocks;
+import net.beastguy.distantlandsmc.block.HollowLogBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -25,6 +25,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.ItemAbility;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -53,14 +54,15 @@ public class ModFlammableRotatedPillarHollowBlock extends RotatedPillarBlock imp
             Block.box(0, 2, 14, 16, 14, 16)   // lado de trás
     );
 
-    public ModFlammableRotatedPillarHollowBlock() {
+    public ModFlammableRotatedPillarHollowBlock(MapColor topMapColor, MapColor sideMapColor, SoundType soundType) {
         super(Properties.of()
-                .mapColor(MapColor.WOOD)
-                .instrument(NoteBlockInstrument.BASS)
+                .mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y
+                        ? topMapColor
+                        : sideMapColor)
                 .strength(2.0f)
-                .sound(SoundType.CHERRY_WOOD)
+                .instrument(NoteBlockInstrument.BASS)
+                .sound(soundType)
                 .ignitedByLava()
-                .requiresCorrectToolForDrops()
                 .noOcclusion()
                 .isSuffocating((state, getter, pos) -> false)
                 .isViewBlocking((state, getter, pos) -> false)
@@ -69,12 +71,10 @@ public class ModFlammableRotatedPillarHollowBlock extends RotatedPillarBlock imp
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(WATERLOGGED, false)
                 .setValue(AXIS, Direction.Axis.Y));
-
-
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
+    public @NotNull BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction.Axis axis = context.getClickedFace().getAxis();
         FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
         boolean waterlogged = fluidState.getType() == Fluids.WATER;
@@ -85,12 +85,12 @@ public class ModFlammableRotatedPillarHollowBlock extends RotatedPillarBlock imp
     }
 
     @Override
-    public FluidState getFluidState(BlockState state) {
+    public @NotNull FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    public @NotNull BlockState updateShape(BlockState state, @NotNull Direction direction, @NotNull BlockState neighborState, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
@@ -98,12 +98,12 @@ public class ModFlammableRotatedPillarHollowBlock extends RotatedPillarBlock imp
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, BlockGetter level, BlockPos pos, BlockState state, Fluid fluid) {
+    public boolean canPlaceLiquid(Player player, @NotNull BlockGetter level, @NotNull BlockPos pos, BlockState state, @NotNull Fluid fluid) {
         return !state.getValue(WATERLOGGED) && fluid == Fluids.WATER;
     }
 
     @Override
-    public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState) {
+    public boolean placeLiquid(@NotNull LevelAccessor level, @NotNull BlockPos pos, BlockState state, @NotNull FluidState fluidState) {
         if (!state.getValue(WATERLOGGED) && fluidState.getType() == Fluids.WATER) {
             level.setBlock(pos, state.setValue(WATERLOGGED, true), 3);
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
@@ -118,33 +118,81 @@ public class ModFlammableRotatedPillarHollowBlock extends RotatedPillarBlock imp
     }
 
     @Override
-    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return true;
     }
 
     @Override
-    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return 5;
     }
 
     @Override
-    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return 5;
     }
 
     @Override
-    public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context,
-                                                     ItemAbility itemAbility, boolean simulate) {
-        /* if (context.getItemInHand().getItem() instanceof AxeItem) {
-            if (state.is(ModBlocks.HARU_HOLLOW_LOG)) {
-                return ModBlocks.STRIPPED_HARU_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+    public @Nullable BlockState getToolModifiedState(@NotNull BlockState state, UseOnContext context,
+                                                     @NotNull ItemAbility itemAbility, boolean simulate) {
+        if (context.getItemInHand().getItem() instanceof AxeItem) {
+            if (state.is(HollowLogBlocks.HARU_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
             }
-        } */
+            else if (state.is(HollowLogBlocks.OAK_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.SPRUCE_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.DARK_OAK_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.BIRCH_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.ACACIA_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.CHERRY_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.JUNGLE_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.MANGROVE_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+            else if (state.is(HollowLogBlocks.BAMBOO_HOLLOW_LOG)) {
+                return HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG.get().defaultBlockState()
+                        .setValue(AXIS, state.getValue(AXIS))
+                        .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+            }
+
+        }
         return super.getToolModifiedState(state, context, itemAbility, simulate);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.world.phys.shapes.CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, net.minecraft.world.phys.shapes.@NotNull CollisionContext context) {
         return switch (state.getValue(AXIS)) {
             case X -> SHAPE_X;
             case Z -> SHAPE_Z;

@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:jungle_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:wooden_axe",
+	"count": 1
+  }
+}

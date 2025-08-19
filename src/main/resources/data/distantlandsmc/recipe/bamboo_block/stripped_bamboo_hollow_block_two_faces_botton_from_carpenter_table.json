@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:bamboo_block"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_bamboo_hollow_block_two_faces_botton"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:oak_wood_sources"
+  },
+  "result": {
+    "id": "minecraft:oak_slab",
+	"count": 4
+  }
+}

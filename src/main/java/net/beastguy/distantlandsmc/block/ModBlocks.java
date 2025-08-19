@@ -4,7 +4,6 @@ import net.beastguy.distantlandsmc.DistantLandsMod;
 import net.beastguy.distantlandsmc.block.custom.*;
 import net.beastguy.distantlandsmc.item.ModItems;
 import net.beastguy.distantlandsmc.sound.ModSounds;
-import net.beastguy.distantlandsmc.util.HaruShapes;
 import net.beastguy.distantlandsmc.util.ModWoodTypes;
 import net.beastguy.distantlandsmc.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -19,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -128,126 +128,34 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> HARU_LOG = registerBlock("haru_log",
-            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LOG)));
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG = registerBlock("haru_hollow_log",
-            ModFlammableRotatedPillarHollowBlock::new);
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_CORNER_BOTTON = registerBlock(
-            "haru_hollow_log_corner_botton",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_CORNER_BOTTON)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_CORNER_TOP = registerBlock(
-            "haru_hollow_log_corner_top",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_CORNER_TOP)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON = registerBlock("haru_hollow_log_corner_tunnel_botton",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP = registerBlock("haru_hollow_log_corner_tunnel_top",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_TWO_FACES = registerBlock("haru_hollow_log_two_faces",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_TWO_FACES)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_TWO_FACES_BOTTON = registerBlock("haru_hollow_log_two_faces_botton",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_TWO_FACES_BOTTON)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_TWO_FACES_TOP = registerBlock("haru_hollow_log_two_faces_top",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_TWO_FACES_TOP)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_TWO_FACES_EMPTY = registerBlock("haru_hollow_log_two_faces_empty",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_TWO_FACES_EMPTY)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_THREE_FACES = registerBlock("haru_hollow_log_three_faces",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_THREE_FACES)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_THREE_FACES_BOTTON = registerBlock("haru_hollow_log_three_faces_botton",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_THREE_FACES_BOTTON)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_THREE_FACES_TOP = registerBlock("haru_hollow_log_three_faces_top",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_THREE_FACES_TOP)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_THREE_FACES_EMPTY = registerBlock("haru_hollow_log_three_faces_empty",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_THREE_FACES_EMPTY)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_ALL_FACES = registerBlock("haru_hollow_log_all_faces",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_ALL_FACES)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_ALL_FACES_BOTTON = registerBlock("haru_hollow_log_all_faces_botton",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_ALL_FACES_BOTTON)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_ALL_FACES_TOP = registerBlock("haru_hollow_log_all_faces_top",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_ALL_FACES_TOP)
-            )
-    );
-
-    public static final DeferredBlock<Block> HARU_HOLLOW_LOG_ALL_FACES_EMPTY = registerBlock("haru_hollow_log_all_faces_empty",
-            () -> new ModFlammableFacingHollowBlock(facing ->
-                    ModFlammableFacingHollowBlock.rotateShape(Direction.NORTH, facing, HaruShapes.HARU_HOLLOW_LOG_ALL_FACES_EMPTY)
-            )
-    );
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LOG)
+                    .mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y
+                            ? MapColor.TERRACOTTA_LIGHT_BLUE // cor do topo
+                            : MapColor.TERRACOTTA_BLUE) // cor lateral
+            ));
 
     public static final DeferredBlock<Block> HARU_WOOD = registerBlock("haru_wood",
-            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-
-
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WOOD)
+                    .mapColor(state -> // cor do topo
+                            MapColor.TERRACOTTA_BLUE) // cor lateral
+            ));
 
     public static final DeferredBlock<Block> STRIPPED_HARU_LOG = registerBlock("stripped_haru_log",
-            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_LOG)));
-
-    public static final DeferredBlock<Block> STRIPPED_HARU_HOLLOW_LOG = registerBlock("stripped_haru_hollow_log",
-            ModFlammableRotatedPillarHollowBlock::new);
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_LOG)
+                    .mapColor(state -> // cor do topo
+                            MapColor.TERRACOTTA_LIGHT_BLUE) // cor lateral
+            ));
 
     public static final DeferredBlock<Block> STRIPPED_HARU_WOOD = registerBlock("stripped_haru_wood",
-            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
-
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_CHERRY_WOOD)
+                    .mapColor(state -> // cor do topo
+                            MapColor.TERRACOTTA_LIGHT_BLUE) // cor lateral
+            ));
 
     public static final DeferredBlock<Block> HARU_PLANKS = registerBlock("haru_planks",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)
+                    .mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
+            ) {
                 @Override
                 public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
                     return true;
@@ -346,7 +254,7 @@ public class ModBlocks {
             RockBlock::new);
 
 
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {   
+    static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
@@ -363,6 +271,7 @@ public class ModBlocks {
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+        HollowLogBlocks.register();
     }
 }
 

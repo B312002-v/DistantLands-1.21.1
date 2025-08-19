@@ -1,0 +1,9 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:mangrove_log"
+  },
+  "result": {
+    "id": "distantlandsmc:stripped_mangrove_hollow_log_two_faces"
+  }
+}

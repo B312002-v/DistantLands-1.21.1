@@ -67,13 +67,13 @@ public class ModPlacedFeatures {
 
         /// NATURE ----------------------- */
         register(context, PETUNIA_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PETUNIA_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
         register(context, PURPLE_GRASS_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PURPLE_GRASS_KEY),
-                List.of(CountPlacement.of(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+                List.of(CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
         register(context, STONES_PATH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.STONES_PATH_KEY),
-                List.of(CountPlacement.of(5), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+                List.of(CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
 
         /// TREES ----------------------- */
         register(context, HARU_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HARU_KEY),

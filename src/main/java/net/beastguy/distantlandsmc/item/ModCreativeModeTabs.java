@@ -1,6 +1,7 @@
 package net.beastguy.distantlandsmc.item;
 
 import net.beastguy.distantlandsmc.DistantLandsMod;
+import net.beastguy.distantlandsmc.block.HollowLogBlocks;
 import net.beastguy.distantlandsmc.block.ModBlocks;
 import net.beastguy.distantlandsmc.fluid.ModFluids;
 import net.minecraft.core.registries.Registries;
@@ -17,47 +18,10 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DistantLandsMod.MODID);
 
-    public static final Supplier<CreativeModeTab> DISTANT_LANDS_ITEMS_TAB =
-            CREATIVE_MODE_TABS.register("distant_lands_items_tab", () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_items_tab"))
-                    .icon(() -> new ItemStack(ModItems.BLACK_OPAL.get()))
-                    .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.BLACK_OPAL);
-                        pOutput.accept(ModItems.RAW_BLACK_OPAL);
-
-                        pOutput.accept(ModItems.RUBY);
-                        pOutput.accept(ModItems.CURSED_RUBY);
-
-                        pOutput.accept(ModItems.CHAINSAW);
-
-                        pOutput.accept(ModItems.TOMATO);
-
-                        pOutput.accept(ModItems.FROSTFIRE_ICE);
-
-                        pOutput.accept(ModItems.DATA_TABLET);
-                        pOutput.accept(ModItems.METAL_DETECTOR);
-
-
-                        pOutput.accept(ModItems.TOMATO_SEEDS);
-
-                        pOutput.accept(ModItems.BAR_BRAWL_MUSIC_DISC);
-
-                        pOutput.accept(ModItems.RADIATION_STAFF);
-
-                        pOutput.accept(ModFluids.BLACK_OPAL_WATER_BUCKET);
-
-                        pOutput.accept(ModItems.HARU_BOAT);
-                        pOutput.accept(ModItems.HARU_CHEST_BOAT);
-
-                        pOutput.accept(ModItems.SMALL_STONE);
-
-                    }).build());
-
     public static final Supplier<CreativeModeTab> DISTANT_LANDS_BLOCKS_TAB =
             CREATIVE_MODE_TABS.register("distant_lands_blocks_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_blocks_tab"))
-                    .icon(() -> new ItemStack(ModBlocks.BLACK_OPAL_BLOCK))
-                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_items_tab"))
+                    .icon(() -> new ItemStack(ModBlocks.CURSED_RUBY_BLOCK))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModBlocks.BLACK_OPAL_BLOCK);
                         pOutput.accept(ModBlocks.RAW_BLACK_OPAL_BLOCK);
@@ -121,40 +85,486 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.PABBLE_2.get());
                         pOutput.accept(ModBlocks.ROCK.get());
 
-                        pOutput.accept(ModBlocks.HARU_PLANKS.get());
                         pOutput.accept(ModBlocks.HARU_LOG.get());
+
                         pOutput.accept(ModBlocks.HARU_WOOD.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_BOTTON.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TOP.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
-
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_BOTTON.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_TOP.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_TWO_FACES_EMPTY.get());
-
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_BOTTON.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_TOP.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_THREE_FACES_EMPTY.get());
-
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_BOTTON.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_TOP.get());
-                        pOutput.accept(ModBlocks.HARU_HOLLOW_LOG_ALL_FACES_EMPTY.get());
-
                         pOutput.accept(ModBlocks.STRIPPED_HARU_LOG.get());
                         pOutput.accept(ModBlocks.STRIPPED_HARU_WOOD.get());
-                        pOutput.accept(ModBlocks.STRIPPED_HARU_HOLLOW_LOG.get());
+                        pOutput.accept(ModBlocks.HARU_PLANKS.get());
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> DISTANT_LANDS_HOLLOW_BLOCKS_TAB =
+            CREATIVE_MODE_TABS.register("distant_lands_hollow_blocks_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_hollow_blocks_tab"))
+                    .icon(() -> new ItemStack(HollowLogBlocks.HARU_HOLLOW_LOG))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_blocks_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.HARU_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_HARU_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.OAK_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_OAK_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.SPRUCE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_SPRUCE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BIRCH_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BIRCH_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.JUNGLE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_JUNGLE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.ACACIA_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_ACACIA_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.DARK_OAK_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_DARK_OAK_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.MANGROVE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_MANGROVE_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CHERRY_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CHERRY_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.BAMBOO_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_BAMBOO_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_CRIMSON_STEM_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.WARPED_STEM_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_CORNER_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_CORNER_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_CORNER_TUNNEL_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_CORNER_TUNNEL_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_TWO_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_TWO_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_TWO_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_TWO_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_THREE_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_THREE_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_THREE_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_THREE_FACES_EMPTY.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_ALL_FACES.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_ALL_FACES_BOTTON.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_ALL_FACES_TOP.get());
+                        pOutput.accept(HollowLogBlocks.STRIPPED_WARPED_STEM_HOLLOW_LOG_ALL_FACES_EMPTY.get());
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> DISTANT_LANDS_ITEMS_TAB =
+            CREATIVE_MODE_TABS.register("distant_lands_items_tab", () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_items_tab"))
+                    .icon(() -> new ItemStack(ModItems.RUBY.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_hollow_blocks_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.BLACK_OPAL);
+                        pOutput.accept(ModItems.RAW_BLACK_OPAL);
+
+                        pOutput.accept(ModItems.RUBY);
+                        pOutput.accept(ModItems.CURSED_RUBY);
+
+                        pOutput.accept(ModItems.CHAINSAW);
+
+                        pOutput.accept(ModItems.TOMATO);
+
+                        pOutput.accept(ModItems.FROSTFIRE_ICE);
+
+                        pOutput.accept(ModItems.DATA_TABLET);
+                        pOutput.accept(ModItems.METAL_DETECTOR);
+
+
+                        pOutput.accept(ModItems.TOMATO_SEEDS);
+
+                        pOutput.accept(ModItems.BAR_BRAWL_MUSIC_DISC);
+
+                        pOutput.accept(ModItems.RADIATION_STAFF);
+
+                        pOutput.accept(ModFluids.BLACK_OPAL_WATER_BUCKET);
+
+                        pOutput.accept(ModItems.HARU_BOAT);
+                        pOutput.accept(ModItems.HARU_CHEST_BOAT);
+
+                        pOutput.accept(ModItems.SMALL_STONE);
+
                     }).build());
 
     public static final Supplier<CreativeModeTab> DISTANT_LANDS_COMBAT_TAB =
             CREATIVE_MODE_TABS.register("distant_lands_combat_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_combat_tab"))
-                    .icon(() -> new ItemStack(ModItems.EMERALD_SWORD.get()))
-                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_blocks_tab"))
+                    .icon(() -> new ItemStack(ModItems.RUBY_HAMMER.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_items_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.EMERALD_HELMET);
                         pOutput.accept(ModItems.EMERALD_CHESTPLATE);

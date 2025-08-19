@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/stripped_jungle_hollow_log_corner_tunnel_botton", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/stripped_jungle_hollow_log_corner_tunnel_botton", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/stripped_jungle_hollow_log_corner_tunnel_botton", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/stripped_jungle_hollow_log_corner_tunnel_botton", "y": 270 }
+  }
+}

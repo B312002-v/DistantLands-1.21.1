@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "item": "minecraft:cherry_log"
+  },
+  "result": {
+    "id": "minecraft:cherry_planks",
+    "count": 4
+  }
+}

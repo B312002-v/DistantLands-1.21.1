@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 public class CarpenterTableRecipe extends SingleItemRecipe {
     private final int inputCount;
 
+
     public CarpenterTableRecipe(String group, Ingredient ingredient, ItemStack itemStack, int inputCount) {
         super(ModRecipeTypes.CARPENTER_TABLE_TYPE.get(), ModRecipeTypes.CARPENTER_TABLE_SERIALIZER.get(),
                 group, ingredient, itemStack);

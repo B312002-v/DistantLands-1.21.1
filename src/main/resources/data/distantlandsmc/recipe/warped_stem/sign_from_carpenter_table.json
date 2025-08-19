@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:warped_hyphae_sources"
+  },
+  "result": {
+    "id": "minecraft:warped_sign",
+	"count": 4
+  }
+}

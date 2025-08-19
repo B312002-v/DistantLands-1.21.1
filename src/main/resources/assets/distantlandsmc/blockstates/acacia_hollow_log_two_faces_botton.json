@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "distantlandsmc:block/acacia_hollow_log_two_faces_botton", "y": 0 },
+    "facing=east":  { "model": "distantlandsmc:block/acacia_hollow_log_two_faces_botton", "y": 90 },
+    "facing=south": { "model": "distantlandsmc:block/acacia_hollow_log_two_faces_botton", "y": 180 },
+    "facing=west":  { "model": "distantlandsmc:block/acacia_hollow_log_two_faces_botton", "y": 270 }
+  }
+}

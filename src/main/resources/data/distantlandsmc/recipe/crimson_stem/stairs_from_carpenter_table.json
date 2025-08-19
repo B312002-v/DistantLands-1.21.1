@@ -1,0 +1,10 @@
+{
+  "type": "distantlandsmc:carpenter_table",
+  "ingredient": {
+    "tag": "distantlandsmc:crimson_hyphae_sources"
+  },
+  "result": {
+    "id": "minecraft:crimson_stairs",
+	"count": 2
+  }
+}
