@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -52,6 +53,9 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> STONES_PATH_KEY = registerKey("stones_path");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SAND_DISK_KEY = registerKey("sand_disk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GRAVEL_DISK_KEY = registerKey("gravel_disk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CLAY_DISK_KEY = registerKey("clay_disk");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
@@ -70,22 +74,39 @@ public class ModConfiguredFeatures {
         register(context, NETHER_CURSED_RUBY_ORE_KEY, Feature.ORE, new OreConfiguration(netherrackReplaceables,
                 ModBlocks.NETHER_CURSED_RUBY_ORE.get().defaultBlockState(), 9));
         register(context, END_CURSED_RUBY_ORE_KEY, Feature.ORE, new OreConfiguration(endReplaceables,
-                ModBlocks.END_CURSED_RUBY_ORE.get().defaultBlockState(), 9));
+                ModBlocks.END_CURSED_RUBY_ORE.get().defaultBlockState(), 3));
 
-        register(context, RUBY_GEODE_KEY, Feature.GEODE,
-                new GeodeConfiguration(new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR),
-                        BlockStateProvider.simple(Blocks.DEEPSLATE),
-                        BlockStateProvider.simple(ModBlocks.RUBY_ORE.get()),
-                        BlockStateProvider.simple(Blocks.POLISHED_BLACKSTONE),
-                        BlockStateProvider.simple(ModBlocks.RUBY_BLOCK.get()),
-                        List.of(ModBlocks.RUBY_BLOCK.get().defaultBlockState()),
-                        BlockTags.FEATURES_CANNOT_REPLACE , BlockTags.GEODE_INVALID_BLOCKS),
-
-                        new GeodeLayerSettings(1.7D, 1.2D, 2.5D, 3.5D),
-                        new GeodeCrackSettings(0.25D, 1.5D, 1), 0.5D, 0.1D,
-                        true, UniformInt.of(3, 8),
-                        UniformInt.of(2, 6), UniformInt.of(1, 2),
-                        -18, 18, 0.075D, 1));
+        register(
+                context,
+                RUBY_GEODE_KEY,
+                Feature.GEODE,
+                new GeodeConfiguration(
+                        new GeodeBlockSettings(
+                                BlockStateProvider.simple(Blocks.AIR),
+                                BlockStateProvider.simple(Blocks.BLACKSTONE),
+                                BlockStateProvider.simple(Blocks.GILDED_BLACKSTONE),
+                                BlockStateProvider.simple(Blocks.POLISHED_BLACKSTONE),
+                                BlockStateProvider.simple(Blocks.SMOOTH_BASALT),
+                                List.of(
+                                        ModBlocks.RUBY_BLACKSTONE_ORE.get().defaultBlockState()
+                                ),
+                                BlockTags.FEATURES_CANNOT_REPLACE,
+                                BlockTags.GEODE_INVALID_BLOCKS
+                        ),
+                        new GeodeLayerSettings(1.7, 2.2, 3.2, 4.2),
+                        new GeodeCrackSettings(0.95, 2.0, 2),
+                        0.35,
+                        0.083,
+                        true,
+                        UniformInt.of(4, 6),
+                        UniformInt.of(3, 4),
+                        UniformInt.of(1, 2),
+                        -16,
+                        16,
+                        0.05,
+                        1
+                )
+        );
 
 
         /// TREES ----------------------- */
@@ -152,6 +173,47 @@ public class ModConfiguredFeatures {
                         )
                 )
         ));
+
+        /// SEA FEATURES ----------------------- */
+
+        // Disk de SAND
+        register(
+                context,
+                SAND_DISK_KEY,
+                Feature.DISK,
+                new DiskConfiguration(
+                        RuleBasedBlockStateProvider.simple(Blocks.SAND),
+                        BlockPredicate.matchesBlocks(Blocks.STONE, Blocks.SAND, Blocks.DIRT, Blocks.GRASS_BLOCK),
+                        UniformInt.of(5, 8), // raio um pouco maior para aparecer mais
+                        2
+                )
+        );
+
+        // Disk de GRAVEL
+        register(
+                context,
+                GRAVEL_DISK_KEY,
+                Feature.DISK,
+                new DiskConfiguration(
+                        RuleBasedBlockStateProvider.simple(Blocks.GRAVEL),
+                        BlockPredicate.matchesBlocks(Blocks.STONE, Blocks.GRAVEL, Blocks.DIRT),
+                        UniformInt.of(5, 8), // raio maior para mais presença
+                        2
+                )
+        );
+
+        // Disk de CLAY
+        register(
+                context,
+                CLAY_DISK_KEY,
+                Feature.DISK,
+                new DiskConfiguration(
+                        RuleBasedBlockStateProvider.simple(Blocks.CLAY),
+                        BlockPredicate.matchesBlocks(Blocks.STONE, Blocks.DIRT),
+                        UniformInt.of(3, 6),
+                        2
+                )
+        );
 
     }
 

@@ -12,10 +12,7 @@ import terrablender.api.EndBiomeRegistry;
 import terrablender.api.Regions;
 
 public class ModBiomes {
-    public static final ResourceKey<Biome> KAUPEN_VALLEY = registerBiomeKey("kaupen_valley");
-    public static final ResourceKey<Biome> GLOWSTONE_PLAIN = registerBiomeKey("glowstone_plain");
     public static final ResourceKey<Biome> END_ROT = registerBiomeKey("end_rot");
-
     public static final ResourceKey<Biome> PURPLE_PLAINS = registerBiomeKey("purple_plains");
 
     public static void registerBiomes() {
@@ -29,10 +26,7 @@ public class ModBiomes {
         var carver = context.lookup(Registries.CONFIGURED_CARVER);
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 
-        register(context, KAUPEN_VALLEY, ModOverworldBiomes.kaupenValley(placedFeatures, carver));
-        register(context, GLOWSTONE_PLAIN, ModNetherBiomes.glowstonePlains(placedFeatures, carver));
         register(context, END_ROT, ModEndBiomes.endRot(placedFeatures, carver));
-
         register(context, PURPLE_PLAINS, ModOverworldBiomes.purplePlains(placedFeatures, carver));
     }
 

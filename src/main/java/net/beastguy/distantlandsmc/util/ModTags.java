@@ -25,15 +25,11 @@ public class ModTags {
         public static final TagKey<Block> INCORRECT_FOR_EMERALD_TOOL = createTag("incorrect_for_emerald_tool");
         public static final TagKey<Block> NEEDS_EMERALD_TOOL = createTag("needs_emerald_tool");
 
-        public static final TagKey<Block> PAXEL_MINEABLE = createTag("mineable/paxel");
-
         public static final TagKey<Block> NEEDS_RUBY_TOOL = createTag("needs_ruby_tool");
         public static final TagKey<Block> INCORRECT_FOR_RUBY_TOOL = createTag("incorrect_for_ruby_tool");
 
         public static final TagKey<Block> NEEDS_CURSED_RUBY_TOOL = createTag("needs_cursed_ruby_tool");
         public static final TagKey<Block> INCORRECT_FOR_CURSED_RUBY_TOOL = createTag("incorrect_for_cursed_ruby_tool");
-
-        public static final TagKey<Block> WOODBLOCKSTAGSORTER = createTag("woodblockstagsorter");
 
         public static final TagKey<Block> WOOD = createTag("wood");
         public static final TagKey<Block> STRIPPED_LOG = createTag("stripped_log");
@@ -62,8 +58,6 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
-
-        public static final TagKey<Item> TOOLSTAGSORTER = createTag("toolstagsorter");
 
         public static final TagKey<Item> BOWL = createTag("bowl");
         public static final TagKey<Item> STICK = createTag("stick");

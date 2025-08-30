@@ -3,7 +3,6 @@ package net.beastguy.distantlandsmc.block;
 import net.beastguy.distantlandsmc.DistantLandsMod;
 import net.beastguy.distantlandsmc.block.custom.*;
 import net.beastguy.distantlandsmc.item.ModItems;
-import net.beastguy.distantlandsmc.sound.ModSounds;
 import net.beastguy.distantlandsmc.util.ModWoodTypes;
 import net.beastguy.distantlandsmc.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -30,59 +29,8 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(DistantLandsMod.MODID);
 
-    public static final DeferredBlock<Block> BLACK_OPAL_BLOCK = registerBlock("black_opal_block",
-            () -> new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> RAW_BLACK_OPAL_BLOCK = registerBlock("raw_black_opal_block",
-            () -> new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-
-    public static final DeferredBlock<Block> BLACK_OPAL_ORE = registerBlock("black_opal_ore",
-            () -> new DropExperienceBlock(UniformInt.of(2, 5),
-                    BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_DEEPSLATE_ORE = registerBlock("black_opal_deepslate_ore",
-            () -> new DropExperienceBlock(UniformInt.of(3, 6),
-                    BlockBehaviour.Properties.of().strength(6f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
-    public static final DeferredBlock<Block> BLACK_OPAL_END_ORE = registerBlock("black_opal_end_ore",
-            () -> new DropExperienceBlock(UniformInt.of(3, 8),
-                    BlockBehaviour.Properties.of().strength(5f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_NETHER_ORE = registerBlock("black_opal_nether_ore",
-            () -> new DropExperienceBlock(UniformInt.of(1, 7),
-                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.NETHERRACK)));
-
-    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock("magic_block",
-            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(4f)
-                    .requiresCorrectToolForDrops().noLootTable().sound(ModSounds.MAGIC_BLOCK_SOUNDS)));
-
-    public static final DeferredBlock<Block> BLACK_OPAL_STAIRS = registerBlock("black_opal_stairs",
-            () -> new StairBlock(ModBlocks.BLACK_OPAL_BLOCK.get().defaultBlockState(),
-                    BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_SLAB = registerBlock("black_opal_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-
-    public static final DeferredBlock<Block> BLACK_OPAL_PRESSURE_PLATE = registerBlock("black_opal_pressure_plate",
-            () -> new PressurePlateBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_BUTTON = registerBlock("black_opal_button",
-            () -> new ButtonBlock(BlockSetType.IRON, 10, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().noCollission()));
-
-    public static final DeferredBlock<Block> BLACK_OPAL_FENCE = registerBlock("black_opal_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_FENCE_GATE = registerBlock("black_opal_fence_gate",
-            () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_WALL = registerBlock("black_opal_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> BLACK_OPAL_DOOR = registerBlock("black_opal_door",
-            () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().noOcclusion()));
-    public static final DeferredBlock<Block> BLACK_OPAL_TRAPDOOR = registerBlock("black_opal_trapdoor",
-            () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().noOcclusion()));
-
-    public static final DeferredBlock<Block> BLACK_OPAL_LAMP = registerBlock("black_opal_lamp",
-            () -> new BlackOpalLampBlock(BlockBehaviour.Properties.of().strength(3f)
-                    .requiresCorrectToolForDrops().lightLevel(state -> state.getValue(BlackOpalLampBlock.CLICKED) ? 15 : 0)));
-
     public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
             () -> new PedestalBlock(BlockBehaviour.Properties.of().noOcclusion()));
-
-    public static final DeferredBlock<Block> CRYSTALLIZER = registerBlock("crystallizer",
-            () -> new CrystallizerBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 
     public static final DeferredBlock<Block> CARPENTER_TABLE = registerBlock("carpenter_table",
             CarpenterTableBlock::new);
@@ -96,6 +44,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RUBY_DEEPSLATE_ORE = registerBlock("ruby_deepslate_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
                     BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+    public static final DeferredBlock<Block> RUBY_BLACKSTONE_ORE = registerBlock("ruby_blackstone_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops().sound(SoundType.GILDED_BLACKSTONE)));
 
     public static final DeferredBlock<Block> NETHER_CURSED_RUBY_ORE = registerBlock("nether_cursed_ruby_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 6),
@@ -114,17 +66,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> CURSED_RUBY_BLOCK = registerBlock("cursed_ruby_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(50.0F).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)));
-
-    public static final DeferredBlock<StairBlock> RUBY_STAIRS = registerBlock("ruby_stairs",
-            () -> new StairBlock(ModBlocks.RUBY_BLOCK.get().defaultBlockState(),
-                    BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops()));
-
-    public static final DeferredBlock<SlabBlock> RUBY_SLAB = registerBlock("ruby_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops()));
-
-    public static final DeferredBlock<Block> COLORED_LEAVES = registerBlock("colored_leaves",
-            () -> new Block(BlockBehaviour.Properties.of().noOcclusion()));
-
 
 
     public static final DeferredBlock<Block> HARU_LOG = registerBlock("haru_log",
@@ -204,9 +145,6 @@ public class ModBlocks {
             () -> new ModWallHangingSignBlock(ModWoodTypes.HARU, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)));
 
     /** NATURE -------------------------------------------------- */
-
-    public static final DeferredBlock<Block> TOMATO_CROP = BLOCKS.register("tomato_crop",
-        () -> new TomatoCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
     public static final DeferredBlock<Block> PETUNIA = registerBlock("petunia",
             () -> new FlowerBlock(MobEffects.BLINDNESS, 8, BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));

@@ -9,9 +9,6 @@ import net.beastguy.distantlandsmc.effect.ModEffects;
 import net.beastguy.distantlandsmc.enchantment.ModEnchantmentEffects;
 import net.beastguy.distantlandsmc.entity.ModEntity;
 import net.beastguy.distantlandsmc.entity.custom.boat.ModBoatRenderer;
-import net.beastguy.distantlandsmc.fluid.BaseFluidType;
-import net.beastguy.distantlandsmc.fluid.ModFluidTypes;
-import net.beastguy.distantlandsmc.fluid.ModFluids;
 import net.beastguy.distantlandsmc.item.ModArmorMaterials;
 import net.beastguy.distantlandsmc.item.ModCreativeModeTabs;
 import net.beastguy.distantlandsmc.item.ModItems;
@@ -29,16 +26,12 @@ import net.beastguy.distantlandsmc.util.ModItemProperties;
 import net.beastguy.distantlandsmc.villager.ModVillagers;
 import net.beastguy.distantlandsmc.worldgen.biome.ModBiomes;
 import net.beastguy.distantlandsmc.worldgen.biome.ModSurfaceRules;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -96,8 +89,6 @@ public class DistantLandsMod {
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
         ModVillagers.register(modEventBus);
-        ModFluidTypes.register(modEventBus);
-        ModFluids.register(modEventBus);
         ModEnchantmentEffects.register(modEventBus);
         ModEntity.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -125,17 +116,16 @@ public class DistantLandsMod {
         });
 
         ModBiomes.registerBiomes();
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, ModSurfaceRules.makeKaupenValleyRules());
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, MODID, ModSurfaceRules.makeGlowstonePlainsRules());
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.END, MODID, ModSurfaceRules.makeEndRotRules());
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, ModSurfaceRules.makePurplePlainsRules());
+        SurfaceRuleManager.addSurfaceRules(
+                SurfaceRuleManager.RuleCategory.OVERWORLD,
+                MODID, ModSurfaceRules.makePurplePlainsRules());
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.BLACK_OPAL);
-            event.accept(ModItems.RAW_BLACK_OPAL);
+
         }
     }
 
@@ -204,31 +194,21 @@ public class DistantLandsMod {
             EntityRenderers.register(ModEntity.MOD_BOAT.get(), context -> new ModBoatRenderer(context, false));
             EntityRenderers.register(ModEntity.MOD_CHEST_BOAT.get(), context -> new ModBoatRenderer(context, true));
 
-            event.enqueueWork(() -> {
-                ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_BLACK_OPAL_WATER.get(), RenderType.translucent());
-                ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_BLACK_OPAL_WATER.get(), RenderType.translucent());
-
-
-            });
-
-
         }
 
         @SubscribeEvent
         public static void onClientExtensions(RegisterClientExtensionsEvent event) {
-            event.registerFluidType(((BaseFluidType) ModFluidTypes.BLACK_OPAL_WATER_FLUID_TYPE.get()).getClientFluidTypeExtensions(),
-                    ModFluidTypes.BLACK_OPAL_WATER_FLUID_TYPE.get());
+
         }
 
         @SubscribeEvent
         public static void registerColoredBlocks(RegisterColorHandlersEvent.Block event) {
-            event.register((pState, pLevel, pPos, pTintIndex) -> pLevel != null &&
-                    pPos != null ? BiomeColors.getAverageFoliageColor(pLevel, pPos) : FoliageColor.getDefaultColor(), ModBlocks.COLORED_LEAVES.get());
+
         }
 
         @SubscribeEvent
         public static void registerColoredItems(RegisterColorHandlersEvent.Item event) {
-            event.register((pStack, pTintIndex) -> FoliageColor.getDefaultColor(), ModBlocks.COLORED_LEAVES);
+
         }
 
         @SubscribeEvent

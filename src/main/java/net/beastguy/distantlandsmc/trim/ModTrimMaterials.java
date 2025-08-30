@@ -16,16 +16,12 @@ import net.minecraft.world.item.armortrim.TrimMaterial;
 import java.util.Map;
 
 public class ModTrimMaterials {
-    public static final ResourceKey<TrimMaterial> BLACK_OPAL =
-            ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "black_opal"));
-
     public static final ResourceKey<TrimMaterial> RUBY =
             ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "ruby"));
     public static final ResourceKey<TrimMaterial> CURSED_RUBY =
             ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "cursed_ruby"));
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
-        register(context, BLACK_OPAL, ModItems.BLACK_OPAL.get(), Style.EMPTY.withColor(TextColor.parseColor("#031cfc").getOrThrow()), 0.3F);
         register(context, RUBY, ModItems.RUBY.get(), Style.EMPTY.withColor(TextColor.parseColor("#bd0013").getOrThrow()), 0.5F);
         register(context, CURSED_RUBY, ModItems.CURSED_RUBY.get(), Style.EMPTY.withColor(TextColor.parseColor("#6d004c").getOrThrow()), 1.0F);
     }

@@ -1,0 +1,6 @@
+{
+  "parent": "distantlandsmc:item/cursed_ruby_bow",
+  "textures": {
+    "layer0": "distantlandsmc:item/cursed_ruby_bow_pulling_2"
+  }
+}

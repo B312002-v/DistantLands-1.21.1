@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import org.jetbrains.annotations.NotNull;
 
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity> {
     public PedestalBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
@@ -23,7 +24,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     @Override
     public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
-                       MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+                       @NotNull MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack stack = pBlockEntity.inventory.getStackInSlot(0);
 
@@ -32,8 +33,21 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         pPoseStack.scale(0.5f, 0.5f, 0.5f);
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.getRenderingRotation()));
 
-        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(),
-                pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
+        Level level = pBlockEntity.getLevel();
+        BlockPos pos = pBlockEntity.getBlockPos();
+        int light = level != null ? getLightLevel(level, pos) : 0xF000F0; // luz máxima se level for null
+
+        itemRenderer.renderStatic(
+                stack,
+                ItemDisplayContext.FIXED,
+                light,
+                OverlayTexture.NO_OVERLAY,
+                pPoseStack,
+                pBufferSource,
+                level,
+                1
+        );
+
         pPoseStack.popPose();
     }
 

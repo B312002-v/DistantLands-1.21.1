@@ -10,8 +10,10 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 
@@ -30,6 +32,10 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PURPLE_GRASS_PLACED_KEY = registerKey("purple_grass_placed");
 
     public static final ResourceKey<PlacedFeature> STONES_PATH_PLACED_KEY = registerKey("stones_path_placed");
+
+    public static final ResourceKey<PlacedFeature> SAND_DISK_PLACED_KEY = registerKey("sand_disk_placed");
+    public static final ResourceKey<PlacedFeature> GRAVEL_DISK_PLACED_KEY = registerKey("gravel_disk_placed");
+    public static final ResourceKey<PlacedFeature> CLAY_DISK_PLACED_KEY = registerKey("clay_disk_placed");
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -55,14 +61,14 @@ public class ModPlacedFeatures {
 
         register(context, END_CURSED_RUBY_ORE_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.END_CURSED_RUBY_ORE_KEY),
-                ModOrePlacement.commonOrePlacement(12,
+                ModOrePlacement.commonOrePlacement(5,
                         HeightRangePlacement.uniform(
-                                VerticalAnchor.absolute(-64),
+                                VerticalAnchor.absolute(20),
                                 VerticalAnchor.absolute(64))));
 
         register(context, RUBY_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.RUBY_GEODE_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(50), InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(50)),
+                List.of(RarityFilter.onAverageOnceEvery(24), InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(30)),
                         BiomeFilter.biome()));
 
         /// NATURE ----------------------- */
@@ -83,6 +89,47 @@ public class ModPlacedFeatures {
         register(context, HARU_SMALL_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HARU_SMALL_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.05f, 1),
                         ModBlocks.HARU_SAPLING.get()));
+
+        /// SEA FEATURES ----------------------- */
+
+        register(
+                context,
+                ModPlacedFeatures.SAND_DISK_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.SAND_DISK_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(
+                context,
+                ModPlacedFeatures.GRAVEL_DISK_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.GRAVEL_DISK_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                        BiomeFilter.biome()
+                )
+        );
+
+        // Disk de CLAY
+        register(
+                context,
+                ModPlacedFeatures.CLAY_DISK_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.CLAY_DISK_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),
+                        BiomeFilter.biome()
+                )
+        );
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

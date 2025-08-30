@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +27,7 @@ public class ChainsawItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
 
         if (!level.isClientSide()) {
@@ -38,15 +39,29 @@ public class ChainsawItem extends Item {
 
                 context.getItemInHand().set(ModDataComponentTypes.COORDINATES, context.getClickedPos());
 
-                context.getLevel().playSound(null, context.getPlayer().blockPosition(), ModSounds.CHAINSAW_CUT.get(),
-                        SoundSource.PLAYERS,1f, 1f);
+                if (context.getPlayer() != null) {
+                    context.getLevel().playSound(
+                            null,
+                            context.getPlayer().blockPosition(),
+                            ModSounds.CHAINSAW_CUT.get(),
+                            SoundSource.PLAYERS,
+                            1f, 1f
+                    );
+                }
 
                 // Server Particles (Via Server, Seen by all players)
                 ((ServerLevel) context.getLevel()).sendParticles(ParticleTypes.SMOKE, context.getClickedPos().getX() + 0.5f, context.getClickedPos().getY() + 1.0f,
                         context.getClickedPos().getZ() + 0.5f, 25, 0.0, 0.05, 0.0, 0.15f);
             } else {
-                context.getLevel().playSound(null, context.getPlayer().blockPosition(), ModSounds.CHAINSAW_PULL.get(),
-                        SoundSource.PLAYERS,1f, 1f);
+                if (context.getPlayer() != null) {
+                    context.getLevel().playSound(
+                            null,
+                            context.getPlayer().blockPosition(),
+                            ModSounds.CHAINSAW_PULL.get(),
+                            SoundSource.PLAYERS,
+                            1f, 1f
+                    );
+                }
             }
         }
 
@@ -54,7 +69,7 @@ public class ChainsawItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
         if (Screen.hasShiftDown()) {
             tooltipComponents.add(Component.translatable("tooltip.distantlandsmc.chainsaw.tooltip.1"));
             tooltipComponents.add(Component.translatable("tooltip.distantlandsmc.chainsaw.tooltip.2"));

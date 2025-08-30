@@ -11,6 +11,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class CustomBowItem extends BowItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
+    public void releaseUsing(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player player) {
             ItemStack itemstack = player.getProjectile(stack);
             if (!itemstack.isEmpty()) {
@@ -57,7 +58,7 @@ public class CustomBowItem extends BowItem {
     }
 
     @Override
-    protected Projectile createProjectile(Level level, LivingEntity shooter, ItemStack weapon, ItemStack ammo, boolean isCrit) {
+    protected @NotNull Projectile createProjectile(@NotNull Level level, @NotNull LivingEntity shooter, @NotNull ItemStack weapon, @NotNull ItemStack ammo, boolean isCrit) {
         Projectile projectile = super.createProjectile(level, shooter, weapon, ammo, isCrit);
 
         if(projectile instanceof AbstractArrow arrow) {

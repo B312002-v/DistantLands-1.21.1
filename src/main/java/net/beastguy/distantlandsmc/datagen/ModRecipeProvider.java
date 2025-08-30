@@ -12,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -22,12 +23,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput pRecipeOutput) {
-        List<ItemLike> BLACK_OPAL_SMELTABLES = List.of(ModItems.RAW_BLACK_OPAL,
-                ModBlocks.BLACK_OPAL_ORE, ModBlocks.BLACK_OPAL_DEEPSLATE_ORE, ModBlocks.BLACK_OPAL_END_ORE, ModBlocks.BLACK_OPAL_NETHER_ORE);
-
-        List<ItemLike> RUBY_SMELTABLES = List.of(ModBlocks.RUBY_ORE, ModBlocks.RUBY_DEEPSLATE_ORE);
-
+    protected void buildRecipes(@NotNull RecipeOutput pRecipeOutput) {
+        List<ItemLike> RUBY_SMELTABLES = List.of(ModBlocks.RUBY_ORE, ModBlocks.RUBY_DEEPSLATE_ORE, ModBlocks.RUBY_BLACKSTONE_ORE);
 
         List<ItemLike> CURSED_RUBY_SMELTABLES = List.of(ModBlocks.NETHER_CURSED_RUBY_ORE, ModBlocks.END_CURSED_RUBY_ORE);
 
@@ -45,21 +42,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         chestBoat(pRecipeOutput, ModItems.HARU_CHEST_BOAT.get(), ModItems.HARU_BOAT.get());
 
         /** ORES ------------------------------- */
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.BLACK_OPAL_BLOCK.get())
-                .pattern("BBB")
-                .pattern("BBB")
-                .pattern("BBB")
-                .define('B', ModItems.BLACK_OPAL.get())
-                .unlockedBy("has_block_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_OPAL.get(), 9)
-                .requires(ModBlocks.BLACK_OPAL_BLOCK.get())
-                .unlockedBy("has_black_opal_block", has(ModBlocks.BLACK_OPAL_BLOCK.get())).save(pRecipeOutput);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLACK_OPAL.get(), 9)
-                .requires(ModBlocks.MAGIC_BLOCK.get())
-                .unlockedBy("has_magic_block", has(ModBlocks.MAGIC_BLOCK.get())).save(pRecipeOutput, "distantlandsmc:black_opal_2");
 
         /** NATURAL BLOCKS ------------------------------- */
 
@@ -114,9 +96,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         /** COOKING RECIPIES ------------------------------- */
 
-        oreSmelting(pRecipeOutput, BLACK_OPAL_SMELTABLES, RecipeCategory.MISC, ModItems.BLACK_OPAL.get(), 0.25f, 200, "black_opal");
-        oreBlasting(pRecipeOutput, BLACK_OPAL_SMELTABLES, RecipeCategory.MISC, ModItems.BLACK_OPAL.get(), 0.25f, 100, "black_opal");
-
         oreSmelting(pRecipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY.get(), 0.25f, 200, "ruby");
         oreBlasting(pRecipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY.get(), 0.25f, 100, "ruby");
 
@@ -136,25 +115,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         /** BUILDING BLOCKS ------------------------------- */
 
-        stairBuilder(ModBlocks.BLACK_OPAL_STAIRS.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                        .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-        slab(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_OPAL_SLAB.get(), ModItems.BLACK_OPAL.get());
-
-        pressurePlate(pRecipeOutput, ModBlocks.BLACK_OPAL_PRESSURE_PLATE.get(), ModItems.BLACK_OPAL.get());
-        buttonBuilder(ModBlocks.BLACK_OPAL_BUTTON.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-
-        fenceBuilder(ModBlocks.BLACK_OPAL_FENCE.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-        fenceGateBuilder(ModBlocks.BLACK_OPAL_FENCE_GATE.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-        wall(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLACK_OPAL_WALL.get(), ModItems.BLACK_OPAL.get());
-
-        doorBuilder(ModBlocks.BLACK_OPAL_DOOR.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-        trapdoorBuilder(ModBlocks.BLACK_OPAL_TRAPDOOR.get(), Ingredient.of(ModItems.BLACK_OPAL.get())).group("black_opal")
-                .unlockedBy("has_black_opal", has(ModItems.BLACK_OPAL.get())).save(pRecipeOutput);
-
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RUBY_BLOCK.get())
                 .pattern("BBB")
                 .pattern("BBB")
@@ -168,11 +128,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BBB")
                 .define('B', ModItems.CURSED_RUBY.get())
                 .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
-
-        stairBuilder(ModBlocks.RUBY_STAIRS.get(), Ingredient.of(ModItems.RUBY)).group("ruby")
-                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
-        slab(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RUBY_SLAB.get(), ModItems.RUBY.get());
-
 
         stairBuilder(ModBlocks.HARU_STAIRS.get(), Ingredient.of(ModBlocks.HARU_PLANKS.get())).group("haru")
                 .unlockedBy("has_haru", has(ModBlocks.HARU_PLANKS.get())).save(pRecipeOutput);
@@ -211,6 +166,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STICK)
                 .unlockedBy("has_emerald", has(Items.EMERALD)).save(pRecipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.EMERALD_BOW.get())
+                .pattern(" ES")
+                .pattern("EAS")
+                .pattern(" ES")
+                .define('E', Items.EMERALD)
+                .define('A', Items.BOW)
+                .define('S', Items.STRING)
+                .unlockedBy("has_emerald", has(Items.EMERALD)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RUBY_SWORD.get())
+                .pattern("E")
+                .pattern("E")
+                .pattern("S")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_GREATAXE.get())
+                .pattern("BSB")
+                .pattern("BSB")
+                .pattern(" S ")
+                .define('B', ModItems.CURSED_RUBY.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_BOW.get())
+                .pattern(" RB")
+                .pattern("RAB")
+                .pattern(" RB")
+                .define('R', ModItems.CURSED_RUBY.get())
+                .define('A', Items.BOW)
+                .define('B', Items.BLAZE_ROD)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
+
         /** ARMOR ------------------------------- */
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.EMERALD_HELMET.get())
@@ -238,8 +228,58 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("E E")
                 .define('E', Items.EMERALD)
                 .unlockedBy("has_emerald", has(Items.EMERALD)).save(pRecipeOutput);
+        //
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RUBY_HELMET.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .define('E', ModItems.RUBY)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
 
-        trimSmithing(pRecipeOutput, ModItems.BEAST_SMITHING_TEMPLATE.get(), ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "beast"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RUBY_CHESTPLATE.get())
+                .pattern("E E")
+                .pattern("EEE")
+                .pattern("EEE")
+                .define('E', ModItems.RUBY)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RUBY_LEGGINGS.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.RUBY)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RUBY_BOOTS.get())
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.RUBY)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+        //
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_HELMET.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .define('E', ModItems.CURSED_RUBY)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_CHESTPLATE.get())
+                .pattern("E E")
+                .pattern("EEE")
+                .pattern("EEE")
+                .define('E', ModItems.CURSED_RUBY)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_LEGGINGS.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.CURSED_RUBY)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CURSED_RUBY_BOOTS.get())
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.CURSED_RUBY)
+                .unlockedBy("has_cursed_ruby", has(ModItems.CURSED_RUBY)).save(pRecipeOutput);
 
         /** TOOLS ------------------------------- */
 
@@ -290,22 +330,79 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('E', Items.EMERALD)
                 .define('S', Items.STICK)
                 .unlockedBy("has_emerald", has(Items.EMERALD)).save(pRecipeOutput, "distantlandsmc:emerald_hoe_2");
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_PICKAXE.get())
+                .pattern("EEE")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_AXE.get())
+                .pattern("EE ")
+                .pattern("ES ")
+                .pattern(" S ")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_AXE.get())
+                .pattern(" EE")
+                .pattern(" SE")
+                .pattern(" S ")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput, "distantlandsmc:ruby_axe_2");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_SHOVEL.get())
+                .pattern("E")
+                .pattern("S")
+                .pattern("S")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_HOE.get())
+                .pattern("EE ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_HOE.get())
+                .pattern("EE ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('E', ModItems.RUBY)
+                .define('S', Items.STICK)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput, "distantlandsmc:ruby_hoe_2");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_HAMMER.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern(" R ")
+                .define('B', ModItems.RUBY.get())
+                .define('R', Items.BLAZE_ROD)
+                .unlockedBy("has_ruby", has(ModItems.RUBY)).save(pRecipeOutput);
     }
 
-    protected static void oreSmelting(RecipeOutput pRecipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
-                                      float pExperience, int pCookingTIme, String pGroup) {
+    protected static void oreSmelting(@NotNull RecipeOutput pRecipeOutput, List<ItemLike> pIngredients, @NotNull RecipeCategory pCategory, @NotNull ItemLike pResult,
+                                      float pExperience, int pCookingTIme, @NotNull String pGroup) {
         oreCooking(pRecipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, pCategory, pResult,
                 pExperience, pCookingTIme, pGroup, "_from_smelting");
     }
 
-    protected static void oreBlasting(RecipeOutput pRecipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
-                                      float pExperience, int pCookingTime, String pGroup) {
+    protected static void oreBlasting(@NotNull RecipeOutput pRecipeOutput, List<ItemLike> pIngredients, @NotNull RecipeCategory pCategory, @NotNull ItemLike pResult,
+                                      float pExperience, int pCookingTime, @NotNull String pGroup) {
         oreCooking(pRecipeOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, pIngredients, pCategory, pResult,
                 pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
-    protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput pRecipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory,
-                                                                       List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+    protected static <T extends AbstractCookingRecipe> void oreCooking(@NotNull RecipeOutput pRecipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.@NotNull Factory<T> factory,
+                                                                       List<ItemLike> pIngredients, @NotNull RecipeCategory pCategory, @NotNull ItemLike pResult, float pExperience, int pCookingTime, @NotNull String pGroup, String pRecipeName) {
         for(ItemLike itemlike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(pRecipeOutput, DistantLandsMod.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));

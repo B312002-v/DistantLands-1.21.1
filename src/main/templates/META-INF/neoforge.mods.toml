@@ -89,6 +89,13 @@ versionRange="[1.21.1]"
 ordering="NONE"
 side="BOTH"
 
+[[dependencies.distantlandsmc]] # obrigatório
+modId="terrablender"
+type="required"
+versionRange="[4,)" # garante qualquer versão 4.x ou superior
+ordering="NONE"
+side="BOTH"
+
 [[dependencies.distantlandsmc]] # opcional
 modId="notenoughanimations"
 type="optional"

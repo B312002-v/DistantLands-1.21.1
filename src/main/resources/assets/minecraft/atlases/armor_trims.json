@@ -35,9 +35,7 @@
         "trims/models/armor/raiser",
         "trims/models/armor/raiser_leggings",
         "trims/models/armor/host",
-        "trims/models/armor/host_leggings",
-        "distantlandsmc:trims/models/armor/beast",
-        "distantlandsmc:trims/models/armor/beast_leggings"
+        "trims/models/armor/host_leggings"
 
       ],
       "palette_key": "trims/color_palettes/trim_palette",
@@ -56,7 +54,8 @@
         "gold_darker": "trims/color_palettes/gold_darker",
         "diamond_darker": "trims/color_palettes/diamond_darker",
         "netherite_darker": "trims/color_palettes/netherite_darker",
-        "black_opal": "distantlandsmc:trims/color_palettes/black_opal"
+        "ruby": "distantlandsmc:trims/color_palettes/ruby",
+        "cursed_ruby": "distantlandsmc:trims/color_palettes/cursed_ruby"
       }
     }
   ]

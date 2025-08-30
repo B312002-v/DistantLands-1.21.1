@@ -19,6 +19,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -35,7 +36,7 @@ public class ModBoatItem extends Item
         this.type = type;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand pHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand pHand) {
         ItemStack itemstack = player.getItemInHand(pHand);
         HitResult hitresult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
         if (hitresult.getType() == HitResult.Type.MISS) {
@@ -47,7 +48,7 @@ public class ModBoatItem extends Item
                 Vec3 vec31 = player.getEyePosition();
 
                 for(Entity entity : list) {
-                    AABB aabb = entity.getBoundingBox().inflate((double)entity.getPickRadius());
+                    AABB aabb = entity.getBoundingBox().inflate(entity.getPickRadius());
                     if (aabb.contains(vec31)) {
                         return InteractionResultHolder.pass(itemstack);
                     }
@@ -84,7 +85,7 @@ public class ModBoatItem extends Item
 
     private Boat getBoat(Level level, HitResult hitResult, ItemStack stack, Player player) {
         Vec3 vec3 = hitResult.getLocation();
-        Boat boat = (Boat)(this.hasChest ? new ModChestBoatEntity(level, vec3.x, vec3.y, vec3.z) : new ModBoatEntity(level, vec3.x, vec3.y, vec3.z));
+        Boat boat = this.hasChest ? new ModChestBoatEntity(level, vec3.x, vec3.y, vec3.z) : new ModBoatEntity(level, vec3.x, vec3.y, vec3.z);
         if (level instanceof ServerLevel serverlevel) {
             EntityType.createDefaultStackConfig(serverlevel, stack, player).accept(boat);
         }

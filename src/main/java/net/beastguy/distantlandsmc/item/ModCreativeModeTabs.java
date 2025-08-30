@@ -3,7 +3,6 @@ package net.beastguy.distantlandsmc.item;
 import net.beastguy.distantlandsmc.DistantLandsMod;
 import net.beastguy.distantlandsmc.block.HollowLogBlocks;
 import net.beastguy.distantlandsmc.block.ModBlocks;
-import net.beastguy.distantlandsmc.fluid.ModFluids;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -23,43 +22,19 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("itemGroup.distantlandsmc.distant_lands_blocks_tab"))
                     .icon(() -> new ItemStack(ModBlocks.CURSED_RUBY_BLOCK))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModBlocks.BLACK_OPAL_BLOCK);
-                        pOutput.accept(ModBlocks.RAW_BLACK_OPAL_BLOCK);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_ORE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_DEEPSLATE_ORE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_NETHER_ORE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_END_ORE);
-
-                        pOutput.accept(ModBlocks.MAGIC_BLOCK);
-
-                        pOutput.accept(ModBlocks.BLACK_OPAL_STAIRS);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_SLAB);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_BUTTON);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_PRESSURE_PLATE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_FENCE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_FENCE_GATE);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_WALL);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_DOOR);
-                        pOutput.accept(ModBlocks.BLACK_OPAL_TRAPDOOR);
-
-                        pOutput.accept(ModBlocks.BLACK_OPAL_LAMP);
 
                         pOutput.accept(ModBlocks.RUBY_BLOCK);
                         pOutput.accept(ModBlocks.CURSED_RUBY_BLOCK);
-                        pOutput.accept(ModBlocks.RUBY_STAIRS);
-                        pOutput.accept(ModBlocks.RUBY_SLAB);
 
                         pOutput.accept(ModBlocks.RUBY_ORE);
                         pOutput.accept(ModBlocks.RUBY_DEEPSLATE_ORE);
+                        pOutput.accept(ModBlocks.RUBY_BLACKSTONE_ORE);
                         pOutput.accept(ModBlocks.NETHER_CURSED_RUBY_ORE);
                         pOutput.accept(ModBlocks.END_CURSED_RUBY_ORE);
 
                         pOutput.accept(ModBlocks.PETUNIA);
-                        pOutput.accept(ModBlocks.COLORED_LEAVES);
 
                         pOutput.accept(ModBlocks.PEDESTAL);
-
-                        pOutput.accept(ModBlocks.CRYSTALLIZER);
 
                         pOutput.accept(ModBlocks.CARPENTER_TABLE);
 
@@ -529,29 +504,10 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModItems.RUBY.get()))
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(DistantLandsMod.MODID, "distant_lands_hollow_blocks_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.BLACK_OPAL);
-                        pOutput.accept(ModItems.RAW_BLACK_OPAL);
-
                         pOutput.accept(ModItems.RUBY);
                         pOutput.accept(ModItems.CURSED_RUBY);
 
                         pOutput.accept(ModItems.CHAINSAW);
-
-                        pOutput.accept(ModItems.TOMATO);
-
-                        pOutput.accept(ModItems.FROSTFIRE_ICE);
-
-                        pOutput.accept(ModItems.DATA_TABLET);
-                        pOutput.accept(ModItems.METAL_DETECTOR);
-
-
-                        pOutput.accept(ModItems.TOMATO_SEEDS);
-
-                        pOutput.accept(ModItems.BAR_BRAWL_MUSIC_DISC);
-
-                        pOutput.accept(ModItems.RADIATION_STAFF);
-
-                        pOutput.accept(ModFluids.BLACK_OPAL_WATER_BUCKET);
 
                         pOutput.accept(ModItems.HARU_BOAT);
                         pOutput.accept(ModItems.HARU_CHEST_BOAT);
@@ -571,18 +527,32 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.EMERALD_LEGGINGS);
                         pOutput.accept(ModItems.EMERALD_BOOTS);
                         pOutput.accept(ModItems.EMERALD_HORSE_ARMOR);
-                        pOutput.accept(ModItems.BEAST_SMITHING_TEMPLATE);
                         pOutput.accept(ModItems.EMERALD_SWORD);
                         pOutput.accept(ModItems.EMERALD_PICKAXE);
                         pOutput.accept(ModItems.EMERALD_AXE);
                         pOutput.accept(ModItems.EMERALD_SHOVEL);
                         pOutput.accept(ModItems.EMERALD_HOE);
-
-                        pOutput.accept(ModItems.BLACK_OPAL_PAXEL);
-                        pOutput.accept(ModItems.RUBY_HAMMER);
                         pOutput.accept(ModItems.EMERALD_BOW);
 
+                        pOutput.accept(ModItems.RUBY_HELMET);
+                        pOutput.accept(ModItems.RUBY_CHESTPLATE);
+                        pOutput.accept(ModItems.RUBY_LEGGINGS);
+                        pOutput.accept(ModItems.RUBY_BOOTS);
+                        pOutput.accept(ModItems.RUBY_SWORD);
+                        pOutput.accept(ModItems.RUBY_PICKAXE);
+                        pOutput.accept(ModItems.RUBY_AXE);
+                        pOutput.accept(ModItems.RUBY_SHOVEL);
+                        pOutput.accept(ModItems.RUBY_HOE);
 
+                        pOutput.accept(ModItems.RUBY_HORSE_ARMOR);
+                        pOutput.accept(ModItems.RUBY_HAMMER);
+
+                        pOutput.accept(ModItems.CURSED_RUBY_HELMET);
+                        pOutput.accept(ModItems.CURSED_RUBY_CHESTPLATE);
+                        pOutput.accept(ModItems.CURSED_RUBY_LEGGINGS);
+                        pOutput.accept(ModItems.CURSED_RUBY_BOOTS);
+                        pOutput.accept(ModItems.CURSED_RUBY_GREATAXE);
+                        pOutput.accept(ModItems.CURSED_RUBY_BOW);
 
                     }).build());
 

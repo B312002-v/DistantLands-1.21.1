@@ -8,12 +8,13 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 public record LightningStrikerEnchantmentEffect() implements EnchantmentEntityEffect {
     public static final MapCodec<LightningStrikerEnchantmentEffect> CODEC = MapCodec.unit(LightningStrikerEnchantmentEffect::new);
 
     @Override
-    public void apply(ServerLevel serverLevel, int enchantmentLevel, EnchantedItemInUse enchantedItemInUse, Entity entity, Vec3 vec3) {
+    public void apply(@NotNull ServerLevel serverLevel, int enchantmentLevel, @NotNull EnchantedItemInUse enchantedItemInUse, @NotNull Entity entity, @NotNull Vec3 vec3) {
         if(enchantmentLevel == 1) {
             EntityType.LIGHTNING_BOLT.spawn(serverLevel, entity.getOnPos(), MobSpawnType.TRIGGERED);
         }
@@ -25,7 +26,7 @@ public record LightningStrikerEnchantmentEffect() implements EnchantmentEntityEf
     }
 
     @Override
-    public MapCodec<? extends EnchantmentEntityEffect> codec() {
+    public @NotNull MapCodec<? extends EnchantmentEntityEffect> codec() {
         return CODEC;
     }
 }

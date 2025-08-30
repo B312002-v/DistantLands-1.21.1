@@ -474,33 +474,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_HARU_WOOD.get());
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.BLACK_OPAL_BLOCK.get())
-                .add(ModBlocks.RAW_BLACK_OPAL_BLOCK.get())
-                .add(ModBlocks.BLACK_OPAL_ORE.get())
-                .add(ModBlocks.BLACK_OPAL_DEEPSLATE_ORE.get())
-                .add(ModBlocks.BLACK_OPAL_END_ORE.get())
-                .add(ModBlocks.BLACK_OPAL_NETHER_ORE.get())
-                .add(ModBlocks.MAGIC_BLOCK.get())
-                .add(ModBlocks.BLACK_OPAL_STAIRS.get())
-                .add(ModBlocks.BLACK_OPAL_SLAB.get())
-                .add(ModBlocks.BLACK_OPAL_BUTTON.get())
-                .add(ModBlocks.BLACK_OPAL_PRESSURE_PLATE.get())
-                .add(ModBlocks.BLACK_OPAL_FENCE.get())
-                .add(ModBlocks.BLACK_OPAL_FENCE_GATE.get())
-                .add(ModBlocks.BLACK_OPAL_WALL.get())
-                .add(ModBlocks.BLACK_OPAL_TRAPDOOR.get())
-                .add(ModBlocks.BLACK_OPAL_DOOR.get())
-
                 .add(ModBlocks.RUBY_ORE.get())
                 .add(ModBlocks.RUBY_DEEPSLATE_ORE.get())
+                .add(ModBlocks.RUBY_BLACKSTONE_ORE.get())
                 .add(ModBlocks.NETHER_CURSED_RUBY_ORE.get())
                 .add(ModBlocks.END_CURSED_RUBY_ORE.get())
 
                 .add(ModBlocks.RUBY_BLOCK.get())
                 .add(ModBlocks.CURSED_RUBY_BLOCK.get())
-
-                .add(ModBlocks.RUBY_STAIRS.get())
-                .add(ModBlocks.RUBY_SLAB.get())
 
                 .add(ModBlocks.PABBLE.get())
                 .add(ModBlocks.PABBLE_1.get())
@@ -525,23 +506,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(ModTags.Blocks.ALL_BLOCKS);
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.BLACK_OPAL_ORE.get())
-                .add(ModBlocks.BLACK_OPAL_DEEPSLATE_ORE.get())
-
-                .add(ModBlocks.RUBY_ORE.get());
+                .add(ModBlocks.RUBY_ORE.get())
+                .add(ModBlocks.RUBY_BLACKSTONE_ORE.get());
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.BLACK_OPAL_END_ORE.get())
-                .add(ModBlocks.BLACK_OPAL_NETHER_ORE.get())
-
                 .add(ModBlocks.RUBY_DEEPSLATE_ORE.get())
                 .add(ModBlocks.NETHER_CURSED_RUBY_ORE.get())
                 .add(ModBlocks.END_CURSED_RUBY_ORE.get());
-
-        this.tag(ModTags.Blocks.PAXEL_MINEABLE)
-                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .addTag(BlockTags.MINEABLE_WITH_AXE)
-                .addTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
         tag(ModTags.Blocks.NEEDS_RUBY_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL);
@@ -558,26 +529,30 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .remove(ModTags.Blocks.NEEDS_EMERALD_TOOL);
 
         tag(BlockTags.STAIRS)
-                .add(ModBlocks.RUBY_STAIRS.get())
                 .add(ModBlocks.HARU_STAIRS.get());
+
         tag(BlockTags.SLABS)
-                .add(ModBlocks.RUBY_SLAB.get())
                 .add(ModBlocks.HARU_SLAB.get());
+
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.HARU_FENCE.get());
-        tag(BlockTags.FENCES)
-                .add(ModBlocks.BLACK_OPAL_FENCE.get());
+
+        tag(BlockTags.FENCES);
+
         tag(BlockTags.FENCE_GATES)
-                .add(ModBlocks.HARU_FENCE_GATE.get())
-                .add(ModBlocks.BLACK_OPAL_FENCE_GATE.get());
-        tag(BlockTags.WALLS)
-                .add(ModBlocks.BLACK_OPAL_WALL.get());
+                .add(ModBlocks.HARU_FENCE_GATE.get());
+
+        tag(BlockTags.WALLS);
+
         tag(BlockTags.BUTTONS)
                 .add(ModBlocks.HARU_BUTTON.get());
+
         tag(BlockTags.DOORS)
                 .add(ModBlocks.HARU_DOOR.get());
+
         tag(BlockTags.TRAPDOORS)
                 .add(ModBlocks.HARU_TRAPDOOR.get());
+
         tag(BlockTags.PRESSURE_PLATES)
                 .add(ModBlocks.HARU_PRESSURE_PLATE.get());
 

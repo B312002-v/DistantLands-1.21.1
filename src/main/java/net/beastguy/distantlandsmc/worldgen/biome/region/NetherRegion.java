@@ -21,12 +21,6 @@ public class NetherRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-        this.addBiome(mapper,
-                Climate.Parameter.point(0.0F),
-                Climate.Parameter.point(0.0F),
-                Climate.Parameter.point(0.0F),
-                Climate.Parameter.point(0.0F),
-                Climate.Parameter.point(0.0F),
-                Climate.Parameter.point(0.0F), 0.0F, ModBiomes.GLOWSTONE_PLAIN);
+
     }
 }

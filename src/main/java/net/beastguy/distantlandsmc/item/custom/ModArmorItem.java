@@ -11,6 +11,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,10 @@ public class ModArmorItem extends ArmorItem {
     private static final Map<Holder<ArmorMaterial>, List<MobEffectInstance>> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<Holder<ArmorMaterial>, List<MobEffectInstance>>())
                     .put(ModArmorMaterials.EMERALD,
-                            List.of(new MobEffectInstance(MobEffects.JUMP, 200, 1, false, false),
+                            List.of(new MobEffectInstance(MobEffects.JUMP, 200, 1, false, false)))
+
+                    .put(ModArmorMaterials.CURSED_RUBY,
+                            List.of(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1, false, false),
                                     new MobEffectInstance(MobEffects.GLOWING, 200, 1, false, false)))
                     .build();
 
@@ -28,7 +32,7 @@ public class ModArmorItem extends ArmorItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+    public void inventoryTick(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
             if(!pLevel.isClientSide() && hasFullSuitOfArmorOn(player)) {
                 evaluateArmorEffects(player);

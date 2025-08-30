@@ -2,9 +2,7 @@ package net.beastguy.distantlandsmc.datagen;
 
 import net.beastguy.distantlandsmc.block.HollowLogBlocks;
 import net.beastguy.distantlandsmc.block.ModBlocks;
-import net.beastguy.distantlandsmc.block.custom.TomatoCropBlock;
 import net.beastguy.distantlandsmc.item.ModItems;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -19,10 +17,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
@@ -33,50 +30,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        dropSelf(ModBlocks.BLACK_OPAL_BLOCK.get());
-        dropSelf(ModBlocks.RAW_BLACK_OPAL_BLOCK.get());
-        // dropSelf(ModBlocks.MAGIC_BLOCK.get());
-
-        this.add(ModBlocks.BLACK_OPAL_ORE.get(),
-                block -> createOreDrop(ModBlocks.BLACK_OPAL_ORE.get(), ModItems.RAW_BLACK_OPAL.get()));
-        this.add(ModBlocks.BLACK_OPAL_DEEPSLATE_ORE.get(),
-                block -> createMultipleOreDrops(ModBlocks.BLACK_OPAL_DEEPSLATE_ORE.get(), ModItems.RAW_BLACK_OPAL.get(), 2, 5));
-        this.add(ModBlocks.BLACK_OPAL_END_ORE.get(),
-                block -> createMultipleOreDrops(ModBlocks.BLACK_OPAL_END_ORE.get(), ModItems.RAW_BLACK_OPAL.get(), 4, 7));
-        this.add(ModBlocks.BLACK_OPAL_NETHER_ORE.get(),
-                block -> createMultipleOreDrops(ModBlocks.BLACK_OPAL_NETHER_ORE.get(), ModItems.RAW_BLACK_OPAL.get(), 3, 9));
-
-        dropSelf(ModBlocks.BLACK_OPAL_STAIRS.get());
-        this.add(ModBlocks.BLACK_OPAL_SLAB.get(),
-                block -> createSlabItemTable(ModBlocks.BLACK_OPAL_SLAB.get()));
-
-        dropSelf(ModBlocks.BLACK_OPAL_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.BLACK_OPAL_BUTTON.get());
-
-        dropSelf(ModBlocks.BLACK_OPAL_FENCE.get());
-        dropSelf(ModBlocks.BLACK_OPAL_FENCE_GATE.get());
-        dropSelf(ModBlocks.BLACK_OPAL_WALL.get());
-
-        dropSelf(ModBlocks.BLACK_OPAL_TRAPDOOR.get());
-        this.add(ModBlocks.BLACK_OPAL_DOOR.get(),
-                block -> createDoorTable(ModBlocks.BLACK_OPAL_DOOR.get()));
-
-        dropSelf(ModBlocks.BLACK_OPAL_LAMP.get());
-
-        LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.TOMATO_CROP.get())
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TomatoCropBlock.AGE, 5));
-        this.add(ModBlocks.TOMATO_CROP.get(), this.createCropDrops(ModBlocks.TOMATO_CROP.get(),
-                ModItems.TOMATO.get(), ModItems.TOMATO_SEEDS.asItem(), lootItemConditionBuilder));
 
         this.dropSelf(ModBlocks.PETUNIA.get());
         this.add(ModBlocks.POTTED_PETUNIA.get(), createPotFlowerItemTable(ModBlocks.PETUNIA));
 
-        dropSelf(ModBlocks.COLORED_LEAVES.get());
-
         dropSelf(ModBlocks.PEDESTAL.get());
-
-        dropSelf(ModBlocks.CRYSTALLIZER.get());
-
 
         this.dropSelf(ModBlocks.HARU_SAPLING.get());
         this.add(ModBlocks.POTTED_HARU_SAPLING.get(), createPotFlowerItemTable(ModBlocks.HARU_SAPLING.get()));
@@ -90,9 +48,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.RUBY_BLOCK.get());
         dropSelf(ModBlocks.CURSED_RUBY_BLOCK.get());
-        dropSelf(ModBlocks.RUBY_STAIRS.get());
-        add(ModBlocks.RUBY_SLAB.get(),
-                block -> createSlabItemTable(ModBlocks.RUBY_SLAB.get()));
 
         dropSelf(ModBlocks.HARU_STAIRS.get());
         dropSelf(ModBlocks.HARU_SLAB.get());
@@ -558,6 +513,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.RUBY_DEEPSLATE_ORE.get(),
                 block -> createOreDrop(ModBlocks.RUBY_DEEPSLATE_ORE.get(), ModItems.RUBY.get()));
 
+        this.add(ModBlocks.RUBY_BLACKSTONE_ORE.get(),
+                block -> createOreDrop(ModBlocks.RUBY_BLACKSTONE_ORE.get(), ModItems.RUBY.get()));
+
 
         this.add(ModBlocks.NETHER_CURSED_RUBY_ORE.get(),
                 block -> createOreDrop(ModBlocks.NETHER_CURSED_RUBY_ORE.get(), ModItems.CURSED_RUBY.get()));
@@ -584,7 +542,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
+    protected @NotNull Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
     }
 }

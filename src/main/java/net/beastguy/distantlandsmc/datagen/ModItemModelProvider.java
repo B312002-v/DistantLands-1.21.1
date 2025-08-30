@@ -2,7 +2,6 @@ package net.beastguy.distantlandsmc.datagen;
 
 import net.beastguy.distantlandsmc.DistantLandsMod;
 import net.beastguy.distantlandsmc.block.ModBlocks;
-import net.beastguy.distantlandsmc.fluid.ModFluids;
 import net.beastguy.distantlandsmc.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -23,7 +22,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.LinkedHashMap;
 
 public class ModItemModelProvider extends ItemModelProvider {
-    private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
+    private static final LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
     static {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
         trimMaterials.put(TrimMaterials.IRON, 0.2F);
@@ -43,17 +42,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.BLACK_OPAL.get());
-        basicItem(ModItems.RAW_BLACK_OPAL.get());
         basicItem(ModItems.CHAINSAW.get());
-        basicItem(ModItems.TOMATO.get());
-        basicItem(ModItems.FROSTFIRE_ICE.get());
-
-        buttonItem(ModBlocks.BLACK_OPAL_BUTTON, ModBlocks.BLACK_OPAL_BLOCK);
-        fenceItem(ModBlocks.BLACK_OPAL_FENCE, ModBlocks.BLACK_OPAL_BLOCK);
-        wallItem(ModBlocks.BLACK_OPAL_WALL, ModBlocks.BLACK_OPAL_BLOCK);
-
-        basicItem(ModBlocks.BLACK_OPAL_DOOR.asItem());
 
         handheldItem(ModItems.EMERALD_SWORD);
         handheldItem(ModItems.EMERALD_PICKAXE);
@@ -61,7 +50,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.EMERALD_SHOVEL);
         handheldItem(ModItems.EMERALD_HOE);
 
-        handheldItem(ModItems.BLACK_OPAL_PAXEL);
+        handheldItem(ModItems.RUBY_SWORD);
+        handheldItem(ModItems.RUBY_PICKAXE);
+        handheldItem(ModItems.RUBY_AXE);
+        handheldItem(ModItems.RUBY_SHOVEL);
+        handheldItem(ModItems.RUBY_HOE);
 
         handheldItem(ModItems.RUBY_HAMMER);
 
@@ -70,21 +63,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.EMERALD_LEGGINGS);
         trimmedArmorItem(ModItems.EMERALD_BOOTS);
 
+        trimmedArmorItem(ModItems.RUBY_HELMET);
+        trimmedArmorItem(ModItems.RUBY_CHESTPLATE);
+        trimmedArmorItem(ModItems.RUBY_LEGGINGS);
+        trimmedArmorItem(ModItems.RUBY_BOOTS);
+
+        trimmedArmorItem(ModItems.CURSED_RUBY_HELMET);
+        trimmedArmorItem(ModItems.CURSED_RUBY_CHESTPLATE);
+        trimmedArmorItem(ModItems.CURSED_RUBY_LEGGINGS);
+        trimmedArmorItem(ModItems.CURSED_RUBY_BOOTS);
+
         basicItem(ModItems.EMERALD_HORSE_ARMOR.get());
-        basicItem(ModItems.BEAST_SMITHING_TEMPLATE.get());
-
-        //basicItem(ModItems.DATA_TABLET.get());
-        basicItem(ModItems.METAL_DETECTOR.get());
-
-        basicItem(ModItems.TOMATO_SEEDS.get());
+        basicItem(ModItems.RUBY_HORSE_ARMOR.get());
 
         flowerItem(ModBlocks.PETUNIA);
-
-        basicItem(ModItems.BAR_BRAWL_MUSIC_DISC.get());
-
-        basicItem(ModFluids.BLACK_OPAL_WATER_BUCKET.get());
-
-        horizontalBlockItem(ModBlocks.CRYSTALLIZER);
 
         saplingItem(ModBlocks.HARU_SAPLING);
 

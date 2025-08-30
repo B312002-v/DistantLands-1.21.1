@@ -17,15 +17,14 @@ public class ModVillagers {
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS =
             DeferredRegister.create(BuiltInRegistries.VILLAGER_PROFESSION, DistantLandsMod.MODID);
 
-    public static final Holder<PoiType> MAGIC_POI = POI_TYPES.register("magic_poi",
-            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.MAGIC_BLOCK.get().getStateDefinition().getPossibleStates()),
+    public static final Holder<PoiType> CARPENTER_POI = POI_TYPES.register("carpenter_poi",
+            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.CARPENTER_TABLE.get().getStateDefinition().getPossibleStates()),
                     1, 1));
 
-    public static final Holder<VillagerProfession> KAUPENGER = VILLAGER_PROFESSIONS.register("kaupenger",
-            () -> new VillagerProfession("kaupenger", holder -> holder.value() == MAGIC_POI.value(),
-                    holder -> holder.value() == MAGIC_POI.value(), ImmutableSet.of(), ImmutableSet.of(),
-                    ModSounds.MAGIC_BLOCK_PLACE.get()));
-
+    public static final Holder<VillagerProfession> CARPENTER = VILLAGER_PROFESSIONS.register("carpenter",
+            () -> new VillagerProfession("carpenter", holder -> holder.value() == CARPENTER_POI.value(),
+                    holder -> holder.value() == CARPENTER_POI.value(), ImmutableSet.of(), ImmutableSet.of(),
+                    ModSounds.CHAINSAW_CUT.get()));
 
 
     public static void register(IEventBus eventBus) {

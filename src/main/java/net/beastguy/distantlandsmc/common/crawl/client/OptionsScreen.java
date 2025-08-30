@@ -18,6 +18,8 @@ public class OptionsScreen extends OptionsSubScreen {
 
     @Override
     protected void addOptions() {
+        if (this.list == null) return; // evita NPE
+
         this.list.addBig(
                 OptionInstance.createBoolean(
                         "crawl.config.replace_animation",

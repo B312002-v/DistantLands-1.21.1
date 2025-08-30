@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "distantlandsmc:hollow_trees",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 345612987,
+    "spacing": 4,
+    "separation": 1
+  }
+}

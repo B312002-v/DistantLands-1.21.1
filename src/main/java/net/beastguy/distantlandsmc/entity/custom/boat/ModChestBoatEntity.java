@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class ModChestBoatEntity extends ChestBoat
 {
@@ -37,7 +38,7 @@ public class ModChestBoatEntity extends ChestBoat
     }
 
     @Override
-    public Item getDropItem()
+    public @NotNull Item getDropItem()
     {
         return switch (getModVariant()) {
             case HARU -> ModItems.HARU_CHEST_BOAT.get();
@@ -49,7 +50,7 @@ public class ModChestBoatEntity extends ChestBoat
         this.entityData.set(DATA_ID_TYPE, pVariant.ordinal());
     }
 
-    protected void defineSynchedData(SynchedEntityData.Builder builder)
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder)
     {
         super.defineSynchedData(builder);
         builder.define(DATA_ID_TYPE, ModBoatEntity.Type.HARU.ordinal());
@@ -57,14 +58,14 @@ public class ModChestBoatEntity extends ChestBoat
 
 
 
-    protected void addAdditionalSaveData(CompoundTag pCompound)
+    protected void addAdditionalSaveData(@NotNull CompoundTag pCompound)
     {
         super.addAdditionalSaveData(pCompound);
         pCompound.putString("Type", this.getModVariant().getSerializedName());
         this.addChestVehicleSaveData(pCompound, this.registryAccess());
     }
 
-    protected void readAdditionalSaveData(CompoundTag pCompound)
+    protected void readAdditionalSaveData(@NotNull CompoundTag pCompound)
     {
         super.readAdditionalSaveData(pCompound);
         this.readChestVehicleSaveData(pCompound, this.registryAccess());

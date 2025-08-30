@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import org.jetbrains.annotations.NotNull;
 
 public class ModEffectSwordItem extends SwordItem {
     private final Holder<MobEffect> effect;
@@ -19,7 +20,7 @@ public class ModEffectSwordItem extends SwordItem {
     }
 
     @Override
-    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+    public boolean onLeftClickEntity(@NotNull ItemStack stack, @NotNull Player player, @NotNull Entity entity) {
         if(entity instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(effect, 200, 1, false, false), player);
         }
