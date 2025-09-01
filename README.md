@@ -35,3 +35,18 @@ O mod é totalmente customizado e criado do zero pelo autor.
 ---
 
 ## Licença
+
+Distant Lands Mod
+Copyright (c) 2025 João Victor Campos Machado
+Todos os direitos reservados.
+
+Este software é fornecido "como está". Nenhuma parte deste mod,
+incluindo código-fonte, assets, texturas, ou arquivos de configuração,
+pode ser copiada, distribuída, modificada, ou usada de qualquer forma
+sem a permissão expressa do autor.
+
+Qualquer uso não autorizado pode resultar em responsabilidade legal.
+
+Para solicitações de uso, distribuição ou modificação, entre em contato:
+Email: beastguyjotave@gmail.com
+
