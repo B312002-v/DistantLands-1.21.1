@@ -9,7 +9,6 @@
 ## Descrição
 
 Distant Lands é um mod para Minecraft que adiciona novos biomas, estruturas e funcionalidades para enriquecer a exploração do mundo.  
-O mod é totalmente customizado e criado do zero pelo autor.
 
 ---
 
