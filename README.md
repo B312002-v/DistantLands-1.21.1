@@ -1,51 +1,21 @@
-# Distant Lands
+# 🌍 Distant Lands
 
-**Autor:** João Victor Campos Machado  
-**Ano:** 2025  
-**Licença:** Todos os direitos reservados  
+**Distant Lands** é um mod para Minecraft que expande a geração de mundo e adiciona novos elementos de forma imersiva e coesa ao estilo vanilla.
 
----
+## 📜 Licença
+- © 2025 João Victor Campos Machado. **Todos os direitos reservados**.
+- O código deste mod é proprietário. Não é permitido copiar, modificar, redistribuir ou usar sem autorização expressa do autor.
+- Esta licença se aplica apenas ao código original do mod **Distant Lands**.
 
-## Descrição
+## 📚 Dependências
+Este mod utiliza bibliotecas externas que possuem suas próprias licenças:
 
-Distant Lands é um mod para Minecraft que adiciona novos biomas, estruturas e funcionalidades para enriquecer a exploração do mundo.  
+- [Just Enough Items (JEI)](https://github.com/mezz/JustEnoughItems) – MIT License  
+- [TerraBlender](https://github.com/TelepathicGrunt/TerraBlender) – LGPL-3.0  
+- [Oh The Trees You’ll Grow](https://github.com/CorgiTaco/Oh-The-Trees-Youll-Grow) – MPL-2.0  
 
----
+Cada biblioteca mantém sua própria licença, que deve ser respeitada de acordo com seus termos.
 
-## Funcionalidades
-
-- Novos biomas e estruturas naturais
-- Itens e blocos customizados
-- Mecânicas especiais de exploração
-- Integração com a experiência vanilla do Minecraft
-
-> Nota: Este mod é projetado para **Minecraft Java Edition 1.21.1**.
-
----
-
-## Instalação
-
-1. Baixe a versão compatível do mod.
-2. Certifique-se de ter o **Minecraft Java Edition** instalado.
-3. Coloque o arquivo `.jar` do mod na pasta `mods` do seu Minecraft.
-4. Execute o Minecraft com a versão correta do **NeoForge**.
-5. Divirta-se explorando as terras distantes!
-
----
-
-## Licença
-
-Distant Lands Mod
-Copyright (c) 2025 João Victor Campos Machado
-Todos os direitos reservados.
-
-Este software é fornecido "como está". Nenhuma parte deste mod,
-incluindo código-fonte, assets, texturas, ou arquivos de configuração,
-pode ser copiada, distribuída, modificada, ou usada de qualquer forma
-sem a permissão expressa do autor.
-
-Qualquer uso não autorizado pode resultar em responsabilidade legal.
-
-Para solicitações de uso, distribuição ou modificação, entre em contato:
-Email: beastguyjotave@gmail.com
-
+## ⚠️ Aviso Legal
+Este projeto **não é afiliado** à Mojang ou à Microsoft.  
+Minecraft é uma marca registrada da Mojang Studios/Microsoft.
